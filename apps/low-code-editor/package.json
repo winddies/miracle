@@ -1,0 +1,49 @@
+{
+  "name": "low-code-editor",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --hot --config webpack.config.js",
+    "build": "webpack --mode production"
+  },
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/winddies/miracle"
+  },
+  "author": "winddies226@gmail.com",
+  "bugs": {
+    "url": "https://github.com/winddies/miracle/issues"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^18.15.13",
+    "@types/react": "^18.0.38",
+    "@types/react-router-dom": "^5.3.3",
+    "css-loader": "^6.7.3",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.5.1",
+    "less": "^4.1.3",
+    "less-loader": "^11.1.0",
+    "mini-css-extract-plugin": "^2.7.5",
+    "postcss-loader": "^7.2.4",
+    "raw-loader": "^4.0.2",
+    "style-loader": "^3.3.2",
+    "tsconfig-paths-webpack-plugin": "^4.0.1",
+    "typescript-plugin-css-modules": "^5.0.1",
+    "webpack": "^5.80.0",
+    "webpack-cli": "^5.0.2",
+    "webpack-dev-server": "^4.13.3"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^5.0.1",
+    "antd": "^5.4.4",
+    "mobx": "^6.9.0",
+    "mobx-react-lite": "^3.4.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.10.0",
+    "zustand": "^4.3.7"
+  }
+}

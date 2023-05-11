@@ -1,0 +1,29 @@
+# 忽略目录
+node_modules/
+build/
+dist/
+tests/
+
+# for 飞冰框架项目
+demo/
+.ice/
+
+# for Taro项目
+config/
+
+# node 覆盖率文件
+coverage/
+
+# 忽略文件
+**/*.min.js
+**/*-min.js
+**/*.bundle.js
+
+.*.js
+babel.config.js
+
+# for Web项目
+command.js
+
+# plop 模板配置
+plopfile.js

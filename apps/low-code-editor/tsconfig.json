@@ -1,0 +1,32 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "outDir": "./dist/",
+    "module": "ESNext",
+    "lib": ["dom", "esnext"],
+    "target": "ES6",
+    "moduleResolution": "node",
+    "allowJs": false,
+    "declaration": true,
+    "declarationDir": "dist",
+    "downlevelIteration": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "sourceMap": true,
+    "strictPropertyInitialization": false,
+    "noImplicitThis": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "baseUrl": "./",
+    "typeRoots": ["./types", "./node_modules/@types"],
+    "paths": {
+      "@miracle/*": ["../../packages/*"]
+    },
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "plugins": [{ "name": "typescript-plugin-css-modules" }]
+  },
+  "include": ["./custom.type.d.ts", "./src/**/*"],
+  "exclude": ["demo", "dist", "node_modules"]
+}

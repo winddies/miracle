@@ -1,0 +1,26 @@
+{
+  "extends": "@tsconfig/recommended/tsconfig.json",
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "lib": ["DOM", "ESNext"],
+    "module": "ES2015",
+    "moduleResolution": "node",
+    "noImplicitAny": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "strict": false,
+    "strictNullChecks": true,
+    "removeComments": false,
+    "resolveJsonModule": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "paths": {
+      "@miracle/*": ["./packages/*"]
+    }
+  },
+  "include": ["./type.d.ts", "./packages/**/*"],
+  "exclude": ["node_modules", "packages/dist/*", "packages/es/*"]
+}
