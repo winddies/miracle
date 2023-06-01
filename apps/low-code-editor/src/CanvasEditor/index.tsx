@@ -12,9 +12,10 @@ export default observer(function FrameEditorRender() {
       store.init(ref.current);
     }
   }, []);
+
   return (
-    <>
+    <div style={{ zIndex: 2 }}>
       <iframe name="SimulatorRenderer" src="/editor-render" className={styles.iframe} ref={ref} />
-    </>
+    </div>
   );
 });

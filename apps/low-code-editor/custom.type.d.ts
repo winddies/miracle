@@ -1,10 +1,8 @@
 import { IEngine } from '@miracle/designer';
 
 declare global {
-  declare module '*.svg' {
-    const content: string;
-    export default content;
-  }
+  declare module '*.svg';
+  declare module '*.png';
 
   interface Window {
     designerEngine: IEngine;

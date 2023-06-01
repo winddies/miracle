@@ -24,10 +24,8 @@ module.exports = {
   mode: process.env.NODE_ENV,
   devServer: {
     historyApiFallback: true,
-    // 自动压缩代码
     compress: true,
     port: 3300,
-    // 自动打开浏览器
     open: true,
     host: '0.0.0.0',
     // publicPath: "/assets/",
@@ -41,8 +39,8 @@ module.exports = {
         loader: 'ts-loader',
       },
       {
-        // .css.less文件解析
-        test: /\.(css|less)$/, // 匹配到css结尾的文件，加载css-loader，
+        // .css、.less文件解析
+        test: /\.(css|less)$/, // 匹配到 css 结尾的文件，加载 css-loader，
         // 去除.module.css;.module.less，因为有单独处理
         exclude: [/\.module\.(css|less)/, /\.global\.less$/],
         use: [
@@ -60,12 +58,12 @@ module.exports = {
         ],
       },
       {
-        // .module.css;.module.less文件解析，添加css modules，防止样式感染
-        test: /\.module\.(css|less)/, // 匹配到less结尾的文件
+        // .module.css、module.less文件解析，添加 css modules，防止样式感染
+        test: /\.module\.(css|less)/, // 匹配到 less 结尾的文件
         use: [
           'style-loader',
           {
-            // css单独分离文件加载
+            // css 单独分离文件加载
             loader: MiniCssExtractPlugin.loader,
             options: {
               esModule: false,

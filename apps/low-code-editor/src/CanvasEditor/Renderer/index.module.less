@@ -1,0 +1,19 @@
+.emptyPage {
+  &:empty:after {
+    align-items: center;
+    align-self: stretch;
+    content: '请将组件拖拽到这里';
+    display: flex;
+    flex: 1 0 0;
+    justify-content: center;
+    height: 60px;
+    opacity: 0.6;
+    outline: 1px dashed #ccc;
+    outline-offset: -1px;
+  }
+}
+
+.pageContainer {
+  width: 100%;
+  height: 100%;
+}

@@ -1,0 +1,14 @@
+.miracle-row {
+  &:empty:after {
+    align-items: center;
+    align-self: stretch;
+    content: '空行';
+    display: flex;
+    flex: 1 0 0;
+    justify-content: center;
+    min-width: 10;
+    opacity: 0.6;
+    outline: 1px dashed #ccc;
+    outline-offset: -1px;
+  }
+}

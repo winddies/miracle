@@ -1,5 +1,7 @@
 import { IComponentMaterial } from '@miracle/react-core/interface';
+import Col from 'antd/es/col';
 import { useEffect, useRef, useState } from 'react';
+import * as styles from './index.module.less';
 import ResourceStore from './store';
 
 interface IProps {
@@ -17,19 +19,13 @@ export default function ResourceItem({ data }: IProps) {
   }, []);
 
   return (
-    <div
-      style={{
-        width: '30%',
-        height: 50,
-        cursor: 'pointer',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}
-    >
-      <div style={{ background: 'yellow', margin: '0 8px', width: '100%', height: '100%' }} ref={ref}>
-        <img src={data.resourceConfig.icon} style={{ width: 30, height: 40 }} draggable={false} />
+    <Col span={8}>
+      <div className={styles.resourceItem}>
+        <div ref={ref} className={styles.resourceIcon}>
+          <img src={data.resourceConfig.icon} className={styles.resourceIcon} draggable={false} />
+        </div>
+        <div className={styles.resourceTitle}>{data.name}</div>
       </div>
-    </div>
+    </Col>
   );
 }

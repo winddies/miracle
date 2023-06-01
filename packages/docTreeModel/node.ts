@@ -1,0 +1,51 @@
+import { ISchema } from '@miracle/react-core/interface';
+import { uniqueId } from 'lodash';
+import type DocTreeModel from './';
+
+export default class Node {
+  id: string;
+  componentName: string;
+  parent: Node | undefined;
+  docTreeModel: DocTreeModel;
+  children: Node[];
+  initialSchema: ISchema;
+
+  constructor(initialSchema: any, parent: Node | undefined, docTreeModel: DocTreeModel) {
+    this.id = initialSchema.id || uniqueId('miracle');
+    this.componentName = initialSchema.componentName;
+    this.parent = parent;
+    this.docTreeModel = docTreeModel;
+    this.initialSchema = initialSchema;
+    this.children = initialSchema.children?.map((child: any) => new Node(child, this, docTreeModel)) || [];
+  }
+
+  exportSchema(): ISchema {
+    return {
+      ...this.initialSchema,
+      id: this.id,
+      children: this.children?.map((child) => child.exportSchema()) || [],
+    };
+  }
+
+  getBoundingClientRect() {
+    const domNode = this.docTreeModel.reactDomCollector.domNodeMap.get(this.id);
+    if (domNode) {
+      return domNode.dom.getBoundingClientRect();
+    }
+  }
+
+  removeChild(child: Node) {
+    this.children.splice(this.children.indexOf(child), 1);
+    child.parent = undefined; // eslint-disable-line
+  }
+
+  insertChildAtLast(child: Node) {
+    this.children.push(child);
+    child.parent = this; // eslint-disable-line
+  }
+
+  insertChildAtIndex(child: Node, index: number) {
+    this.children.splice(index, 0, child);
+    child.parent = this; // eslint-disable-line
+  }
+}

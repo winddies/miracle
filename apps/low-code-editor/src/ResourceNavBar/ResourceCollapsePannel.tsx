@@ -1,5 +1,5 @@
 import { IComponentMaterial } from '@miracle/react-core/interface';
-import { Collapse } from 'antd';
+import { Collapse, Row } from 'antd';
 import { useCallback, useEffect, useState } from 'react';
 import ResourceItem from './ResourceItem';
 
@@ -24,11 +24,11 @@ export default function ResourceCollapsePannel(props: {
   return (
     <Collapse accordion activeKey={expanded ? key : ''} ghost onChange={handleChange} {...other}>
       <Collapse.Panel header={<div>{title}</div>} key={key}>
-        <div style={{ display: 'flex' }}>
+        <Row>
           {data.map((item: any) => (
             <ResourceItem data={item} key={item.name} />
           ))}
-        </div>
+        </Row>
       </Collapse.Panel>
     </Collapse>
   );
