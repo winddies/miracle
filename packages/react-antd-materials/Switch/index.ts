@@ -15,10 +15,11 @@ export const SwitchMaterial: IComponentMaterial = {
     group: 'button',
     display: DisplayType.Inline,
     // type: ComponentType.SingleControl,
-
+    designProps: {
+      className: makeComponentDesignClass('switch'),
+    },
     props: {
       children: 'Switch',
-      className: makeComponentDesignClass('switch'),
     },
     behaviorRule: {
       droppable: false,

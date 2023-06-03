@@ -166,6 +166,10 @@ class SimulatorStore {
         this.setInsertLineStyle();
       });
 
+      this.designeEngine.docTreeModel.on(EventName.NodePropsChange, () => {
+        this.update();
+      });
+
       this.update();
     }
   };

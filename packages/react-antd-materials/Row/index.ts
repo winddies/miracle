@@ -15,9 +15,10 @@ export const RowMaterial: IComponentMaterial = {
     containerType: ContainerType.Layout,
     designProps: {
       className: makeComponentDesignClass('row'),
+    },
+    props: {
       style: { height: 40 },
     },
-
     behaviorRule: {
       droppable: true,
       draggable: true,

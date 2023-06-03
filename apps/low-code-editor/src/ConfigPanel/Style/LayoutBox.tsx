@@ -27,59 +27,59 @@ export default function LayoutBox() {
       <div className={styles.layoutBoxContainer}>
         <div className={styles.marginBorderTop}>
           <span className={styles.inputBox}>
-            <input {...register('layout.marginTop')} />
+            <input {...register('style.marginTop')} />
           </span>
           <span className={styles.title}>外边距</span>
         </div>
         <div className={styles.marginBorderRight}>
           <span className={styles.inputBox}>
-            <input {...register('layout.marginRight')} />
+            <input {...register('style.marginRight')} />
           </span>
         </div>
         <div className={styles.marginBorderBottom}>
           <span className={styles.inputBox}>
-            <input {...register('layout.marginBottom')} />
+            <input {...register('style.marginBottom')} />
           </span>
         </div>
         <div className={styles.marginBorderLeft}>
           <span className={styles.inputBox}>
-            <input {...register('layout.marginLeft')} />
+            <input {...register('style.marginLeft')} />
           </span>
         </div>
 
         <div className={styles.paddingBorderTop}>
           <span className={styles.inputBox}>
-            <input {...register('layout.paddingTop')} />
+            <input {...register('style.paddingTop')} />
           </span>
           <span className={styles.title}>内边距</span>
         </div>
         <div className={styles.paddingBorderRight}>
           <span className={styles.inputBox}>
-            <input {...register('layout.paddingRight')} />
+            <input {...register('style.paddingRight')} />
           </span>
         </div>
         <div className={styles.paddingBorderBottom}>
           <span className={styles.inputBox}>
-            <input {...register('layout.paddingBottom')} />
+            <input {...register('style.paddingBottom')} />
           </span>
         </div>
         <div className={styles.paddingBorderLeft}>
           <span className={styles.inputBox}>
-            <input {...register('layout.paddingLeft')} />
+            <input {...register('style.paddingLeft')} />
           </span>
         </div>
         <div className={styles.content} ref={contentRef}>
           {showWidth ? (
-            <input {...register('layout.width')} onBlur={() => setShowWidth(false)} autoFocus type="number" />
+            <input {...register('style.width')} onBlur={() => setShowWidth(false)} autoFocus type="number" />
           ) : (
-            <span onClick={() => setShowWidth(true)}>{getValues('layout.width') || '宽'}</span>
+            <span onClick={() => setShowWidth(true)}>{getValues('style.width') || '宽'}</span>
           )}
           &nbsp;x&nbsp;
           {showHeight ? (
-            <input {...register('layout.height')} onBlur={() => setShowHeight(false)} autoFocus type="number" />
+            <input {...register('style.height')} onBlur={() => setShowHeight(false)} autoFocus type="number" />
           ) : (
             <span onClick={() => setShowHeight(true)} onBlur={() => setShowHeight(false)}>
-              {getValues('layout.height') || '高'}
+              {getValues('style.height') || '高'}
             </span>
           )}
         </div>
@@ -87,7 +87,7 @@ export default function LayoutBox() {
       <div className={styles.layoutDisplay}>
         <Form.Item label="展示" {...layout}>
           <Controller
-            name="layout.display"
+            name="style.display"
             control={control}
             render={({ field }) => (
               <Radio.Group {...field} className={styles.layoutDisplay} size="small">

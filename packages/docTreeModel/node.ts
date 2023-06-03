@@ -1,6 +1,7 @@
 import { ISchema } from '@miracle/react-core/interface';
 import { uniqueId } from 'lodash';
-import type DocTreeModel from './';
+import type DocTreeModel from './index';
+import Props from './props';
 
 export default class Node {
   id: string;
@@ -9,6 +10,7 @@ export default class Node {
   docTreeModel: DocTreeModel;
   children: Node[];
   initialSchema: ISchema;
+  props: Props;
 
   constructor(initialSchema: any, parent: Node | undefined, docTreeModel: DocTreeModel) {
     this.id = initialSchema.id || uniqueId('miracle');
@@ -16,6 +18,7 @@ export default class Node {
     this.parent = parent;
     this.docTreeModel = docTreeModel;
     this.initialSchema = initialSchema;
+    this.props = new Props(this, initialSchema?.props, docTreeModel);
     this.children = initialSchema.children?.map((child: any) => new Node(child, this, docTreeModel)) || [];
   }
 
@@ -23,6 +26,7 @@ export default class Node {
     return {
       ...this.initialSchema,
       id: this.id,
+      props: this.props.export(),
       children: this.children?.map((child) => child.exportSchema()) || [],
     };
   }

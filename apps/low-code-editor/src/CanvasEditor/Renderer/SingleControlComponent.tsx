@@ -12,6 +12,8 @@ interface IProps {
 export default observer(function SingleControlComponent({ schema }: IProps) {
   const ref = useRef<HTMLDivElement>(null);
 
+  console.log('render ##', schema);
+
   useEffect(() => {
     store.mountNode(schema.id as string, ref.current as HTMLElement);
   }, []);
@@ -23,7 +25,6 @@ export default observer(function SingleControlComponent({ schema }: IProps) {
     const { noRef, draggable } = schema.behaviorRule;
     const { designProps } = schema;
     if (!component) return null;
-
     return component
       ? React.createElement(
           component,
@@ -38,7 +39,7 @@ export default observer(function SingleControlComponent({ schema }: IProps) {
           children,
         )
       : null;
-  }, []);
+  }, [schema]);
 
   return view;
 });

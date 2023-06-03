@@ -16,9 +16,14 @@ export const ButtonMaterial: IComponentMaterial = {
     display: DisplayType.Inline,
     // type: ComponentType.SingleControl,
 
+    designProps: {
+      className: makeComponentDesignClass('button'),
+    },
     props: {
       children: '按钮',
-      className: makeComponentDesignClass('button'),
+      style: {
+        width: 150,
+      },
     },
     behaviorRule: {
       droppable: false,

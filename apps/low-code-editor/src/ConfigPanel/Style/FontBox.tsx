@@ -16,28 +16,28 @@ export default function FontBox() {
       <Row>
         <Col span={12}>
           <Form.Item label="字号">
-            <Controller name="font.size" control={control} render={() => <Input type="number" />} />
+            <Controller name="style.fontSize" control={control} render={() => <Input type="number" />} />
           </Form.Item>
         </Col>
         <Col span={12}>
           <Form.Item label="行高">
-            <Controller name="font.lineWeight" control={control} render={() => <Input type="number" />} />
+            <Controller name="style.lineWeight" control={control} render={() => <Input type="number" />} />
           </Form.Item>
         </Col>
         <Col span={12}>
           <Form.Item label="字重">
-            <Controller name="font.fontWeight" control={control} render={() => <Input type="number" />} />
+            <Controller name="style.fontWeight" control={control} render={() => <Input type="number" />} />
           </Form.Item>
         </Col>
         <Col span={12}>
           <Form.Item label="颜色">
-            <Controller name="font.color" control={control} render={() => <ColorPicker />} />
+            <Controller name="style.color" control={control} render={() => <ColorPicker />} />
           </Form.Item>
         </Col>
         <Col span={24}>
           <Form.Item label="对齐">
             <Controller
-              name="font.color"
+              name="style.textAlign"
               control={control}
               render={() => (
                 <Radio.Group className={styles.fontAlign}>

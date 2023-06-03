@@ -1,18 +1,23 @@
 import { ISchema } from '@miracle/react-core/interface';
 import ReactDomCollector from '@miracle/simulator/reactInstanceCollector';
+import EventEmitter from 'eventemitter3';
 import { singleton } from 'tsyringe';
+import { EventName } from './../constants/index';
 import { IPointLocation } from './../dragon/index';
+// eslint-disable-next-line import/no-cycle
 import Node from './node';
 
 @singleton()
-export default class DocTreeModel {
+export default class DocTreeModel extends EventEmitter {
   rootNode: Node;
   nodeMap: Map<string, Node> = new Map();
   selectedNode: Node | null = null;
 
   hoveredNode: Node | null = null;
 
-  constructor(public reactDomCollector: ReactDomCollector) {}
+  constructor(public reactDomCollector: ReactDomCollector) {
+    super();
+  }
 
   getSchema(): ISchema {
     return {
@@ -79,5 +84,9 @@ export default class DocTreeModel {
     }
 
     return containerMap.get(minDistanceId);
+  }
+
+  onNodePropsChange() {
+    this.emit(EventName.NodePropsChange);
   }
 }

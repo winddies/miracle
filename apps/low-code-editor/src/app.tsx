@@ -1,31 +1,35 @@
 import DesigneEngine from '@miracle/engine';
 import { Layout } from 'antd';
-import { useLayoutEffect } from 'react';
+import { useLayoutEffect, useState } from 'react';
 import { container } from 'tsyringe';
 import FrameEditor from './CanvasEditor';
 import ConfigPanel from './ConfigPanel';
 import * as styles from './index.module.less';
 import Header from './layout/Header';
 import SideBar from './layout/SideBar';
+import { engineContext } from './utils/context';
 
-const { Footer, Content } = Layout;
+const { Content } = Layout;
 
 export default function APP() {
+  const [designEngine] = useState(container.resolve(DesigneEngine));
+
   useLayoutEffect(() => {
-    const designEngine = container.resolve(DesigneEngine);
     designEngine.init();
   }, []);
 
   return (
-    <Layout>
-      <Header />
-      <Layout className={styles.contentLayout}>
-        <SideBar />
-        <Content style={{ padding: '0 30px' }}>
-          <FrameEditor />
-        </Content>
-        <ConfigPanel />
+    <engineContext.Provider value={designEngine}>
+      <Layout>
+        <Header />
+        <Layout className={styles.contentLayout}>
+          <SideBar />
+          <Content style={{ padding: '0 30px' }}>
+            <FrameEditor />
+          </Content>
+          <ConfigPanel />
+        </Layout>
       </Layout>
-    </Layout>
+    </engineContext.Provider>
   );
 }
