@@ -17,7 +17,6 @@ export default class Props {
 
   export() {
     const value = Object.fromEntries(this.dataModel.entries());
-    console.log('export', value);
     return value;
   }
 

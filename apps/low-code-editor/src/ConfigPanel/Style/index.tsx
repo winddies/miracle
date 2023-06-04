@@ -19,14 +19,14 @@ export default observer(function Style() {
 
   useEffect(() => {
     const subscription = methods.watch((value, { name, type }) => {
-      console.log('value', value, name);
-      for (const key in obj) {
-        if (obj[key] === null || (typeof obj[key] === 'object' && Object.keys(obj[key]).length === 0)) {
-          delete obj[key];
+      const { style } = value;
+      for (const key in style) {
+        if (style[key] == null || !style[key]) {
+          delete style[key];
         }
       }
 
-      engine.docTreeModel.selectedNode.props.setProp('style', value.style);
+      engine.docTreeModel.selectedNode.props.setProp('style', style);
     });
     return subscription.unsubscribe;
   }, [methods.watch]);

@@ -23,6 +23,7 @@ export const ButtonMaterial: IComponentMaterial = {
       children: '按钮',
       style: {
         width: 150,
+        marginTop: 10,
       },
     },
     behaviorRule: {

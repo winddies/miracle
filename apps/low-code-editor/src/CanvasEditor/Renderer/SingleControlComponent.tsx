@@ -25,7 +25,8 @@ export default observer(function SingleControlComponent({ schema }: IProps) {
     const { noRef, draggable } = schema.behaviorRule;
     const { designProps } = schema;
     if (!component) return null;
-    return component
+    console.log('style', toJS(style));
+    const d = component
       ? React.createElement(
           component,
           {
@@ -39,6 +40,9 @@ export default observer(function SingleControlComponent({ schema }: IProps) {
           children,
         )
       : null;
+
+    console.log('d', d);
+    return d;
   }, [schema]);
 
   return view;
