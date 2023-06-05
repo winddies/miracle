@@ -39,7 +39,6 @@ export default observer(function ConfigPanel() {
   const engine = useContext(engineContext);
 
   useEffect(() => {
-    console.log('engine', engine);
     store.init(engine);
   }, []);
 

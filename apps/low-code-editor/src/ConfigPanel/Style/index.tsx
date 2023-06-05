@@ -1,24 +1,35 @@
-import { Button, Collapse, Divider } from 'antd';
+import { Button, Collapse } from 'antd';
 import { observer } from 'mobx-react-lite';
-import { useContext, useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { FormProvider, useForm, useFormState } from 'react-hook-form';
-import { engineContext } from '../../utils/context';
 import CssEditor from './CssEditor';
 import FontBox from './FontBox';
 import LayoutBox from './LayoutBox';
 
+import store from '../store';
+
 import * as styles from './index.module.less';
 
 export default observer(function Style() {
-  const methods = useForm({ mode: 'onChange' });
-  const engine = useContext(engineContext);
+  const values = useMemo(() => ({ style: store.style }), [store.selectedNode]);
+  console.log('values', values);
+  const methods = useForm({ values });
 
   const { dirtyFields } = useFormState({
     control: methods.control,
   });
 
+  // useEffect(() => {
+  //   if (store.selectedNode) {
+  //     const style = store.selectedNodeSchema?.props?.style;
+  //     console.log('style', style);
+  //     methods.reset({ style }, { keepDefaultValues: false });
+  //   }
+  // }, [store.selectedNode]);
+
   useEffect(() => {
-    const subscription = methods.watch((value, { name, type }) => {
+    const subscription = methods.watch((value, { type }) => {
+      if (!type) return;
       const { style } = value;
       for (const key in style) {
         if (style[key] == null || !style[key]) {
@@ -26,10 +37,10 @@ export default observer(function Style() {
         }
       }
 
-      engine.docTreeModel.selectedNode.props.setProp('style', style);
+      store.selectedNode?.props.setProp('style', style);
     });
     return subscription.unsubscribe;
-  }, [methods.watch]);
+  }, []);
 
   return (
     <FormProvider {...methods}>
@@ -53,11 +64,11 @@ export default observer(function Style() {
         >
           <CssEditor />
         </Collapse.Panel>
-        <Divider />
+        {/* <Divider /> */}
         <Collapse.Panel header="布局" key="layout">
           <LayoutBox />
         </Collapse.Panel>
-        <Divider />
+        {/* <Divider /> */}
         <Collapse.Panel header="字体" key="font">
           <FontBox />
         </Collapse.Panel>

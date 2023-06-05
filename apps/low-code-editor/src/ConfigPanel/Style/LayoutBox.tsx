@@ -1,5 +1,5 @@
 import { Form, Radio, Tooltip } from 'antd';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
 import Block from '../icons/block.svg';
 import EyeNone from '../icons/eye-none.svg';
@@ -15,68 +15,77 @@ export interface IProps {
 
 const layout = { labelCol: { span: 8 }, wrapperCol: { span: 16 } };
 
+const valueParser = (v: string) => (v ? parseInt(v, 10) : null);
+
 export default function LayoutBox() {
   const { register, control, getValues } = useFormContext();
   const contentRef = useRef<HTMLDivElement>(null);
   const [showWidth, setShowWidth] = useState(false);
   const [showHeight, setShowHeight] = useState(false);
-  useEffect(() => {}, []);
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+    <div className={styles.layout}>
       <div className={styles.layoutBoxContainer}>
         <div className={styles.marginBorderTop}>
           <span className={styles.inputBox}>
-            <input {...register('style.marginTop')} />
+            <input {...register('style.marginTop', { setValueAs: valueParser })} />
           </span>
           <span className={styles.title}>外边距</span>
         </div>
         <div className={styles.marginBorderRight}>
           <span className={styles.inputBox}>
-            <input {...register('style.marginRight')} />
+            <input {...register('style.marginRight', { setValueAs: valueParser })} />
           </span>
         </div>
         <div className={styles.marginBorderBottom}>
           <span className={styles.inputBox}>
-            <input {...register('style.marginBottom')} />
+            <input {...register('style.marginBottom', { setValueAs: valueParser })} />
           </span>
         </div>
         <div className={styles.marginBorderLeft}>
           <span className={styles.inputBox}>
-            <input {...register('style.marginLeft')} />
+            <input {...register('style.marginLeft', { setValueAs: valueParser })} />
           </span>
         </div>
 
         <div className={styles.paddingBorderTop}>
           <span className={styles.inputBox}>
-            <input {...register('style.paddingTop')} />
+            <input {...register('style.paddingTop', { setValueAs: valueParser })} />
           </span>
           <span className={styles.title}>内边距</span>
         </div>
         <div className={styles.paddingBorderRight}>
           <span className={styles.inputBox}>
-            <input {...register('style.paddingRight')} />
+            <input {...register('style.paddingRight', { setValueAs: valueParser })} />
           </span>
         </div>
         <div className={styles.paddingBorderBottom}>
           <span className={styles.inputBox}>
-            <input {...register('style.paddingBottom')} />
+            <input {...register('style.paddingBottom', { setValueAs: valueParser })} />
           </span>
         </div>
         <div className={styles.paddingBorderLeft}>
           <span className={styles.inputBox}>
-            <input {...register('style.paddingLeft')} />
+            <input {...register('style.paddingLeft', { setValueAs: valueParser })} />
           </span>
         </div>
         <div className={styles.content} ref={contentRef}>
           {showWidth ? (
-            <input {...register('style.width')} onBlur={() => setShowWidth(false)} autoFocus type="number" />
+            <input
+              {...register('style.width', { setValueAs: valueParser })}
+              onBlur={() => setShowWidth(false)}
+              autoFocus
+            />
           ) : (
             <span onClick={() => setShowWidth(true)}>{getValues('style.width') || '宽'}</span>
           )}
           &nbsp;x&nbsp;
           {showHeight ? (
-            <input {...register('style.height')} onBlur={() => setShowHeight(false)} autoFocus type="number" />
+            <input
+              {...register('style.height', { setValueAs: (v: string) => parseInt(v, 10) })}
+              onBlur={() => setShowHeight(false)}
+              autoFocus
+            />
           ) : (
             <span onClick={() => setShowHeight(true)} onBlur={() => setShowHeight(false)}>
               {getValues('style.height') || '高'}

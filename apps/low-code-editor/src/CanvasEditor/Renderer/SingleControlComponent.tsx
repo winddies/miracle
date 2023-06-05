@@ -4,6 +4,7 @@ import { toJS } from 'mobx';
 import { observer } from 'mobx-react-lite';
 import React, { useEffect, useMemo, useRef } from 'react';
 import store from '../simulatorStore';
+import { transInlineCssToStyleObject } from '../util';
 
 interface IProps {
   schema: ISchema;
@@ -11,8 +12,6 @@ interface IProps {
 
 export default observer(function SingleControlComponent({ schema }: IProps) {
   const ref = useRef<HTMLDivElement>(null);
-
-  console.log('render ##', schema);
 
   useEffect(() => {
     store.mountNode(schema.id as string, ref.current as HTMLElement);
@@ -22,15 +21,18 @@ export default observer(function SingleControlComponent({ schema }: IProps) {
     if (!schema) return null;
     const component = store.getComponentBySchema(schema);
     const { style, children, ...others } = schema.props || {};
+    const { customCss, otherStyles } = toJS(style) || {};
     const { noRef, draggable } = schema.behaviorRule;
     const { designProps } = schema;
     if (!component) return null;
-    console.log('style', toJS(style));
-    const d = component
+    return component
       ? React.createElement(
           component,
           {
-            style: toJS(style),
+            style: {
+              ...otherStyles,
+              ...(transInlineCssToStyleObject(customCss) || {}),
+            },
             ref,
             draggable,
             ...(noRef && { [MIRACLE_NODE_ID]: schema.id, id: schema.id }),
@@ -40,9 +42,6 @@ export default observer(function SingleControlComponent({ schema }: IProps) {
           children,
         )
       : null;
-
-    console.log('d', d);
-    return d;
   }, [schema]);
 
   return view;
