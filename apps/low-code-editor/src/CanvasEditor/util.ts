@@ -20,8 +20,6 @@ export function transInlineCssToStyleObject(inlineCss: string) {
   if (!inlineCss) return {};
   const css = inlineCss.split('{')[1].split('}')[0];
   if (!css || !css.trim()) return {};
-  console.log('css', css);
   const obj = getStyleFromCss(css);
-  console.log('obj', obj);
   return obj;
 }

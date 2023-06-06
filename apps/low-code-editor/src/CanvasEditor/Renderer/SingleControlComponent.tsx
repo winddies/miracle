@@ -21,7 +21,7 @@ export default observer(function SingleControlComponent({ schema }: IProps) {
     if (!schema) return null;
     const component = store.getComponentBySchema(schema);
     const { style, children, ...others } = schema.props || {};
-    const { customCss, otherStyles } = toJS(style) || {};
+    const { customCss, ...otherStyles } = toJS(style) || {};
     const { noRef, draggable } = schema.behaviorRule;
     const { designProps } = schema;
     if (!component) return null;

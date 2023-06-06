@@ -37,6 +37,15 @@ class ConfigPanelStore {
     };
   }
 
+  updateStyle(style: Record<string, any>) {
+    for (const key in style) {
+      if (style[key] == null || !style[key]) {
+        delete style[key];
+      }
+    }
+    this.selectedNode?.props.setProp('style', style);
+  }
+
   init(engine: DesigneEngine) {
     this.engine = engine;
 

@@ -11,51 +11,41 @@ import store from '../store';
 import * as styles from './index.module.less';
 
 export default observer(function Style() {
-  const values = useMemo(() => ({ style: store.style }), [store.selectedNode]);
-  console.log('values', values);
+  const values = useMemo(() => store.style, [store.selectedNode]);
   const methods = useForm({ values });
 
   const { dirtyFields } = useFormState({
     control: methods.control,
   });
 
-  // useEffect(() => {
-  //   if (store.selectedNode) {
-  //     const style = store.selectedNodeSchema?.props?.style;
-  //     console.log('style', style);
-  //     methods.reset({ style }, { keepDefaultValues: false });
-  //   }
-  // }, [store.selectedNode]);
-
   useEffect(() => {
-    const subscription = methods.watch((value, { type }) => {
-      if (!type) return;
-      const { style } = value;
-      for (const key in style) {
-        if (style[key] == null || !style[key]) {
-          delete style[key];
-        }
-      }
-
-      store.selectedNode?.props.setProp('style', style);
+    const subscription = methods.watch((value, { name, type }) => {
+      if (!type || name === 'cssEditorValue') return;
+      const data = { ...value };
+      store.updateStyle(data);
     });
     return subscription.unsubscribe;
   }, []);
 
   return (
     <FormProvider {...methods}>
-      <Collapse defaultActiveKey={['layout', 'font', 'inlineStyle']} ghost className={styles.collpase}>
+      <Collapse defaultActiveKey={['layout', 'font']} ghost className={styles.collpase}>
         <Collapse.Panel
           header="自定义 CSS"
-          key="inlineStyle"
+          key="customCss"
           extra={
             <Button
               size="small"
               type="primary"
               style={{ fontSize: 12 }}
-              disabled={!dirtyFields?.style?.css}
+              disabled={!dirtyFields?.cssEditorValue}
               onClick={(e) => {
                 e.stopPropagation();
+                const value = { ...methods.getValues() };
+                value.customCss = value.cssEditorValue;
+                delete value.cssEditorValue;
+                store.updateStyle(value);
+                methods.resetField('cssEditorValue');
               }}
             >
               保存

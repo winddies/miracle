@@ -15,6 +15,8 @@ export default class DocTreeModel extends EventEmitter {
 
   hoveredNode: Node | null = null;
 
+  resizeObserver: ResizeObserver | null = null;
+
   constructor(public reactDomCollector: ReactDomCollector) {
     super();
   }
@@ -32,7 +34,16 @@ export default class DocTreeModel extends EventEmitter {
   }
 
   setSelectedNode(node: Node | null) {
+    this.resizeObserver?.disconnect();
     this.selectedNode = node;
+    if (!node) return;
+    this.resizeObserver = new ResizeObserver(() => {
+      this.emit(EventName.Resize);
+    });
+
+    const dom = this.reactDomCollector.domNodeMap.get(node.id)?.dom;
+    if (!dom) return;
+    this.resizeObserver.observe(dom);
   }
 
   setHoverNode(node: Node | null) {

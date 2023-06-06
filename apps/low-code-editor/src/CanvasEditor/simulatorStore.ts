@@ -53,7 +53,7 @@ class SimulatorStore {
         height,
         left: left - 1,
         top: top - 1,
-        border: '1px solid #1677ff',
+        border: '2px solid #1677ff',
         transparent: true,
       };
     }
@@ -150,6 +150,10 @@ class SimulatorStore {
         this.resolveRender = resolve;
       });
 
+      this.designeEngine.docTreeModel.on(EventName.NodePropsChange, () => {
+        this.update();
+      });
+
       this.designeEngine.simulatorHost.on(EventName.SelectNode, () => {
         this.setDetectionStyle();
       });
@@ -166,8 +170,8 @@ class SimulatorStore {
         this.setInsertLineStyle();
       });
 
-      this.designeEngine.docTreeModel.on(EventName.NodePropsChange, () => {
-        this.update();
+      this.designeEngine.docTreeModel.on(EventName.Resize, () => {
+        this.setDetectionStyle();
       });
 
       this.update();

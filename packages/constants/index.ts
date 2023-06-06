@@ -6,6 +6,7 @@ export enum EventName {
   SelectNode = 'selectNode',
   HoverNode = 'hoverNode',
   NodePropsChange = 'nodePropsChange',
+  Resize = 'resize',
 }
 
 export const MIRACLE_NODE_ID = 'miracle-node-id';

@@ -21,7 +21,6 @@ export default class Props {
   }
 
   setProp(propName: string, value: Record<string, any>) {
-    console.log('propsName', value);
     this.dataModel.set(propName, value);
     this.docTreeModel.onNodePropsChange();
   }

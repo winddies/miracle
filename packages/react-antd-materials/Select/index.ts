@@ -19,7 +19,7 @@ export const SelectMaterial: IComponentMaterial = {
     props: {
       placeholder: '请选择数据',
       style: {
-        width: 150,
+        width: 180,
       },
     },
     behaviorRule: {

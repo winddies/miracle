@@ -6,7 +6,6 @@ import Style from './Style';
 import * as styles from './index.module.less';
 import store from './store';
 
-const { TabPane } = Tabs;
 const tabItems = [
   {
     label: '样式',
@@ -17,22 +16,22 @@ const tabItems = [
     label: '属性',
     key: '1',
   },
-  {
-    label: '事件',
-    key: '2',
-  },
-  {
-    label: '数据',
-    key: '4',
-  },
-  {
-    label: '动画',
-    key: '5',
-  },
-  {
-    label: '交互',
-    key: '6',
-  },
+  // {
+  //   label: '事件',
+  //   key: '2',
+  // },
+  // {
+  //   label: '数据',
+  //   key: '4',
+  // },
+  // {
+  //   label: '动画',
+  //   key: '5',
+  // },
+  // {
+  //   label: '交互',
+  //   key: '6',
+  // },
 ];
 
 export default observer(function ConfigPanel() {
@@ -42,13 +41,5 @@ export default observer(function ConfigPanel() {
     store.init(engine);
   }, []);
 
-  if (store.selectedNode === null) {
-    return null;
-  }
-
-  return (
-    <div className={styles.configPanel}>
-      <Tabs items={tabItems} />
-    </div>
-  );
+  return <div className={styles.configPanel}>{store.selectedNode && <Tabs items={tabItems} />}</div>;
 });

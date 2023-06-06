@@ -24,7 +24,7 @@ export default function APP() {
         <Header />
         <Layout className={styles.contentLayout}>
           <SideBar />
-          <Content style={{ padding: '0 30px' }}>
+          <Content className={styles.main}>
             <FrameEditor />
           </Content>
           <ConfigPanel />

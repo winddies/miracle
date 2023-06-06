@@ -13,7 +13,7 @@ export interface IProps {
   register: any;
 }
 
-const layout = { labelCol: { span: 8 }, wrapperCol: { span: 16 } };
+const layout = { labelCol: { span: 4 }, wrapperCol: { span: 20 } };
 
 const valueParser = (v: string) => (v ? parseInt(v, 10) : null);
 
@@ -28,67 +28,63 @@ export default function LayoutBox() {
       <div className={styles.layoutBoxContainer}>
         <div className={styles.marginBorderTop}>
           <span className={styles.inputBox}>
-            <input {...register('style.marginTop', { setValueAs: valueParser })} />
+            <input {...register('marginTop', { setValueAs: valueParser })} />
           </span>
           <span className={styles.title}>外边距</span>
         </div>
         <div className={styles.marginBorderRight}>
           <span className={styles.inputBox}>
-            <input {...register('style.marginRight', { setValueAs: valueParser })} />
+            <input {...register('marginRight', { setValueAs: valueParser })} />
           </span>
         </div>
         <div className={styles.marginBorderBottom}>
           <span className={styles.inputBox}>
-            <input {...register('style.marginBottom', { setValueAs: valueParser })} />
+            <input {...register('marginBottom', { setValueAs: valueParser })} />
           </span>
         </div>
         <div className={styles.marginBorderLeft}>
           <span className={styles.inputBox}>
-            <input {...register('style.marginLeft', { setValueAs: valueParser })} />
+            <input {...register('marginLeft', { setValueAs: valueParser })} />
           </span>
         </div>
 
         <div className={styles.paddingBorderTop}>
           <span className={styles.inputBox}>
-            <input {...register('style.paddingTop', { setValueAs: valueParser })} />
+            <input {...register('paddingTop', { setValueAs: valueParser })} />
           </span>
           <span className={styles.title}>内边距</span>
         </div>
         <div className={styles.paddingBorderRight}>
           <span className={styles.inputBox}>
-            <input {...register('style.paddingRight', { setValueAs: valueParser })} />
+            <input {...register('paddingRight', { setValueAs: valueParser })} />
           </span>
         </div>
         <div className={styles.paddingBorderBottom}>
           <span className={styles.inputBox}>
-            <input {...register('style.paddingBottom', { setValueAs: valueParser })} />
+            <input {...register('paddingBottom', { setValueAs: valueParser })} />
           </span>
         </div>
         <div className={styles.paddingBorderLeft}>
           <span className={styles.inputBox}>
-            <input {...register('style.paddingLeft', { setValueAs: valueParser })} />
+            <input {...register('paddingLeft', { setValueAs: valueParser })} />
           </span>
         </div>
         <div className={styles.content} ref={contentRef}>
           {showWidth ? (
-            <input
-              {...register('style.width', { setValueAs: valueParser })}
-              onBlur={() => setShowWidth(false)}
-              autoFocus
-            />
+            <input {...register('width', { setValueAs: valueParser })} onBlur={() => setShowWidth(false)} autoFocus />
           ) : (
-            <span onClick={() => setShowWidth(true)}>{getValues('style.width') || '宽'}</span>
+            <span onClick={() => setShowWidth(true)}>{getValues('width') || '宽'}</span>
           )}
           &nbsp;x&nbsp;
           {showHeight ? (
             <input
-              {...register('style.height', { setValueAs: (v: string) => parseInt(v, 10) })}
+              {...register('height', { setValueAs: (v: string) => parseInt(v, 10) })}
               onBlur={() => setShowHeight(false)}
               autoFocus
             />
           ) : (
             <span onClick={() => setShowHeight(true)} onBlur={() => setShowHeight(false)}>
-              {getValues('style.height') || '高'}
+              {getValues('height') || '高'}
             </span>
           )}
         </div>
@@ -96,10 +92,10 @@ export default function LayoutBox() {
       <div className={styles.layoutDisplay}>
         <Form.Item label="展示" {...layout}>
           <Controller
-            name="style.display"
+            name="display"
             control={control}
             render={({ field }) => (
-              <Radio.Group {...field} className={styles.layoutDisplay} size="small">
+              <Radio.Group {...field} className={styles.layoutDisplay}>
                 <Radio.Button value="block">
                   <Tooltip title="块级元素">
                     <img src={Block} />

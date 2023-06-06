@@ -46,7 +46,6 @@ export default class Dragon extends EventEmitter {
   }
 
   onResourceDragStart(e: DragEvent, schema: ISchema) {
-    console.log('drag start ##');
     this.dragging = true;
     this.dragObject = { data: schema, type: DragObjectType.Resource };
   }
@@ -110,7 +109,6 @@ export default class Dragon extends EventEmitter {
 
       // 找出距离最近的一个子节点
       const closetChildNode = this.getMinDistanceNode(childMap, dragPoint);
-      console.log(closetChildNode);
 
       if (!closetChildNode || isSameNode(closetChildNode)) return null;
       let insertNodeSide: InsertSide | null = null;
