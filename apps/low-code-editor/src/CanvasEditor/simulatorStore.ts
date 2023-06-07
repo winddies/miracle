@@ -152,6 +152,11 @@ class SimulatorStore {
 
       this.designeEngine.docTreeModel.on(EventName.NodePropsChange, () => {
         this.update();
+
+        // 这里需要延迟一下才能获取到正确的位置，不然可能获取的位置属于样式变化的中间状态
+        setTimeout(() => {
+          this.setDetectionStyle();
+        }, 200);
       });
 
       this.designeEngine.simulatorHost.on(EventName.SelectNode, () => {
@@ -168,10 +173,6 @@ class SimulatorStore {
 
       this.designeEngine.dragon.on(EventName.DragEnd, () => {
         this.setInsertLineStyle();
-      });
-
-      this.designeEngine.docTreeModel.on(EventName.Resize, () => {
-        this.setDetectionStyle();
       });
 
       this.update();

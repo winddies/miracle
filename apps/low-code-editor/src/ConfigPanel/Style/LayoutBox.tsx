@@ -1,6 +1,7 @@
 import { Form, Radio, Tooltip } from 'antd';
 import { useRef, useState } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
+import { handleRegister } from 'src/utils/form-enhancement';
 import Block from '../icons/block.svg';
 import EyeNone from '../icons/eye-none.svg';
 import Flex from '../icons/flex.svg';
@@ -28,57 +29,61 @@ export default function LayoutBox() {
       <div className={styles.layoutBoxContainer}>
         <div className={styles.marginBorderTop}>
           <span className={styles.inputBox}>
-            <input {...register('marginTop', { setValueAs: valueParser })} />
+            <input {...handleRegister(register, 'marginTop', { setValueAs: valueParser })} />
           </span>
           <span className={styles.title}>外边距</span>
         </div>
         <div className={styles.marginBorderRight}>
           <span className={styles.inputBox}>
-            <input {...register('marginRight', { setValueAs: valueParser })} />
+            <input {...handleRegister(register, 'marginRight', { setValueAs: valueParser })} />
           </span>
         </div>
         <div className={styles.marginBorderBottom}>
           <span className={styles.inputBox}>
-            <input {...register('marginBottom', { setValueAs: valueParser })} />
+            <input {...handleRegister(register, 'marginBottom', { setValueAs: valueParser })} />
           </span>
         </div>
         <div className={styles.marginBorderLeft}>
           <span className={styles.inputBox}>
-            <input {...register('marginLeft', { setValueAs: valueParser })} />
+            <input {...handleRegister(register, 'marginLeft', { setValueAs: valueParser })} />
           </span>
         </div>
 
         <div className={styles.paddingBorderTop}>
           <span className={styles.inputBox}>
-            <input {...register('paddingTop', { setValueAs: valueParser })} />
+            <input {...handleRegister(register, 'paddingTop', { setValueAs: valueParser })} />
           </span>
           <span className={styles.title}>内边距</span>
         </div>
         <div className={styles.paddingBorderRight}>
           <span className={styles.inputBox}>
-            <input {...register('paddingRight', { setValueAs: valueParser })} />
+            <input {...handleRegister(register, 'paddingRight', { setValueAs: valueParser })} />
           </span>
         </div>
         <div className={styles.paddingBorderBottom}>
           <span className={styles.inputBox}>
-            <input {...register('paddingBottom', { setValueAs: valueParser })} />
+            <input {...handleRegister(register, 'paddingBottom', { setValueAs: valueParser })} />
           </span>
         </div>
         <div className={styles.paddingBorderLeft}>
           <span className={styles.inputBox}>
-            <input {...register('paddingLeft', { setValueAs: valueParser })} />
+            <input {...handleRegister(register, 'paddingLeft', { setValueAs: valueParser })} />
           </span>
         </div>
         <div className={styles.content} ref={contentRef}>
           {showWidth ? (
-            <input {...register('width', { setValueAs: valueParser })} onBlur={() => setShowWidth(false)} autoFocus />
+            <input
+              {...handleRegister(register, 'width', { setValueAs: valueParser })}
+              onBlur={() => setShowWidth(false)}
+              autoFocus
+            />
           ) : (
             <span onClick={() => setShowWidth(true)}>{getValues('width') || '宽'}</span>
           )}
           &nbsp;x&nbsp;
           {showHeight ? (
             <input
-              {...register('height', { setValueAs: (v: string) => parseInt(v, 10) })}
+              {...handleRegister(register, 'height', { setValueAs: (v: string) => parseInt(v, 10) })}
               onBlur={() => setShowHeight(false)}
               autoFocus
             />

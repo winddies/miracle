@@ -1,5 +1,6 @@
 import { Col, ColorPicker, Form, Input, Radio, Row, Tooltip } from 'antd';
 import { Controller, useFormContext } from 'react-hook-form';
+import { addDebounceToField } from 'src/utils/form-enhancement';
 import Center from '../icons/align-center.svg';
 import Justify from '../icons/align-justify.svg';
 import Left from '../icons/align-left.svg';
@@ -9,14 +10,18 @@ import * as styles from './index.module.less';
 const layout = { labelCol: { span: 7 }, wrapperCol: { span: 12 } };
 
 export default function FontBox() {
-  const { control } = useFormContext();
+  const { control, getValues } = useFormContext();
 
   return (
     <Form {...layout}>
       <Row>
         <Col span={12}>
           <Form.Item label="字号">
-            <Controller name="fontSize" control={control} render={({ field }) => <Input type="number" {...field} />} />
+            <Controller
+              name="fontSize"
+              control={control}
+              render={({ field }) => <Input type="number" {...addDebounceToField(field)} />}
+            />
           </Form.Item>
         </Col>
         <Col span={12}>
@@ -24,7 +29,7 @@ export default function FontBox() {
             <Controller
               name="lineWeight"
               control={control}
-              render={({ field }) => <Input type="number" {...field} />}
+              render={({ field }) => <Input type="number" {...addDebounceToField(field)} />}
             />
           </Form.Item>
         </Col>
@@ -33,13 +38,23 @@ export default function FontBox() {
             <Controller
               name="fontWeight"
               control={control}
-              render={({ field }) => <Input type="number" {...field} />}
+              render={({ field }) => <Input type="number" {...addDebounceToField(field)} />}
             />
           </Form.Item>
         </Col>
         <Col span={12}>
           <Form.Item label="颜色">
-            <Controller name="color" control={control} render={({ field }) => <ColorPicker {...field} />} />
+            <Controller
+              name="color"
+              control={control}
+              render={({ field }) => (
+                <ColorPicker
+                  value={field.value}
+                  onChange={(value) => field.onChange(value.toRgbString())}
+                  format="rgb"
+                />
+              )}
+            />
           </Form.Item>
         </Col>
       </Row>

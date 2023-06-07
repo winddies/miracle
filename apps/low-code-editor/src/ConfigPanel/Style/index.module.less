@@ -323,23 +323,18 @@
     left: 45px;
     right: 45px;
     bottom: 45px;
-    background-color: #e6fffb;
+    background-color: #ace1ea;
     display: flex;
     align-items: center;
     justify-content: center;
+    opacity: 0.7;
+
+    &:hover {
+      opacity: 1;
+    }
 
     input {
       width: 40px;
-    }
-
-    &:empty:after {
-      display: flex;
-      justify-content: center;
-      content: '宽 x 高';
-      align-items: center;
-      opacity: 0.6;
-      outline: 1px dashed #ccc;
-      height: 60px;
     }
   }
 }
