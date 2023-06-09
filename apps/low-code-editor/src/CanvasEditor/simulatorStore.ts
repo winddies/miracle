@@ -45,10 +45,10 @@ class SimulatorStore {
 
   remove() {
     const { selectedNode } = this.designEngine?.docTreeModel || {};
-    console.log('action tools click', selectedNode);
     if (selectedNode) {
       this.designEngine?.docTreeModel.removeNode(selectedNode);
       this.update();
+      this.detectionStyle = {};
     }
   }
 
@@ -56,7 +56,6 @@ class SimulatorStore {
     const { selectedNode } = this.designEngine?.docTreeModel || {};
     if (!selectedNode) {
       this.detectionStyle = {};
-      this.actionToolsStyle = {};
     } else {
       const { left, top, width, height } = selectedNode?.getBoundingClientRect() as DOMRect;
       this.detectionStyle = {
@@ -66,12 +65,6 @@ class SimulatorStore {
         top: top - 1,
         border: '2px solid #1677ff',
         transparent: true,
-      };
-      this.actionToolsStyle = {
-        top: top - 21,
-        left: left + width - 10,
-        width: '10px',
-        height: '10px',
       };
     }
   }

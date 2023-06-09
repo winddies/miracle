@@ -1,5 +1,4 @@
 import { observer } from 'mobx-react-lite';
-import ActionTools from './ActionTools';
 import Detection from './Detection';
 import DetectionHover from './DetectionHover';
 import InsertionView from './InsertionView';
@@ -11,7 +10,6 @@ export default observer(function LocationTools() {
       <InsertionView />
       <Detection />
       <DetectionHover />
-      <ActionTools />
     </div>
   );
 });
