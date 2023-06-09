@@ -17,7 +17,6 @@ class SimulatorStore {
   insertLineStyle = {};
   detectionStyle = {};
   detectionHoverStyle = {};
-  actionToolsStyle = {};
 
   constructor() {
     makeAutoObservable(this);
