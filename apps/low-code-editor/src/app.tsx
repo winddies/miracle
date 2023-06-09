@@ -1,4 +1,4 @@
-import DesigneEngine from '@miracle/engine';
+import DesignEngine from '@miracle/engine';
 import { Layout } from 'antd';
 import { useLayoutEffect, useState } from 'react';
 import { container } from 'tsyringe';
@@ -9,10 +9,17 @@ import Header from './layout/Header';
 import SideBar from './layout/SideBar';
 import { engineContext } from './utils/context';
 
+import LeftSider from './layout/LeftSider';
+
 const { Content } = Layout;
 
+const contentStyle: React.CSSProperties = {
+  minHeight: 120,
+  display: 'flex',
+};
+
 export default function APP() {
-  const [designEngine] = useState(container.resolve(DesigneEngine));
+  const [designEngine] = useState(container.resolve(DesignEngine));
 
   useLayoutEffect(() => {
     designEngine.init();
@@ -21,13 +28,16 @@ export default function APP() {
   return (
     <engineContext.Provider value={designEngine}>
       <Layout>
-        <Header />
-        <Layout className={styles.contentLayout}>
-          <SideBar />
-          <Content className={styles.main}>
-            <FrameEditor />
+        <LeftSider />
+        <Layout>
+          <Header />
+          <Content className={styles['contentLayout']}>
+            <SideBar />
+            <Content className={styles['main']}>
+              <FrameEditor />
+            </Content>
+            <ConfigPanel />
           </Content>
-          <ConfigPanel />
         </Layout>
       </Layout>
     </engineContext.Provider>
