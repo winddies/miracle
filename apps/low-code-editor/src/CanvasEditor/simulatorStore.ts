@@ -8,7 +8,7 @@ import { getEngine, isHTMLElement } from './util';
 
 @singleton()
 class SimulatorStore {
-  designeEngine: IEngine | null = null;
+  designEngine: IEngine | null = null;
 
   schema: ISchema | null = null;
 
@@ -23,7 +23,7 @@ class SimulatorStore {
   }
 
   getComponentBySchema(schema: ISchema) {
-    return this.designeEngine?.getComponentBySchema(materials, schema);
+    return this.designEngine?.getComponentBySchema(materials, schema);
   }
 
   mountNode(id: string, reactDom: HTMLElement | null) {
@@ -35,15 +35,24 @@ class SimulatorStore {
     }
 
     dom?.setAttribute(MIRACLE_NODE_ID, id);
-    this.designeEngine?.reactDomCollector.mount(id, dom);
+    this.designEngine?.reactDomCollector.mount(id, dom);
   }
 
   update() {
-    this.schema = this.designeEngine?.docTreeModel.getSchema() || null;
+    this.schema = this.designEngine?.docTreeModel.getSchema() || null;
+  }
+
+  remove() {
+    const { selectedNode } = this.designEngine?.docTreeModel || {};
+    if (selectedNode) {
+      this.designEngine?.docTreeModel.removeNode(selectedNode);
+      this.update();
+      this.detectionStyle = {};
+    }
   }
 
   setDetectionStyle() {
-    const { selectedNode } = this.designeEngine?.docTreeModel || {};
+    const { selectedNode } = this.designEngine?.docTreeModel || {};
     if (!selectedNode) {
       this.detectionStyle = {};
     } else {
@@ -60,7 +69,7 @@ class SimulatorStore {
   }
 
   setDetectionHoverStyle() {
-    const { hoveredNode } = this.designeEngine?.docTreeModel || {};
+    const { hoveredNode } = this.designEngine?.docTreeModel || {};
     if (!hoveredNode) {
       this.detectionHoverStyle = {};
     } else {
@@ -143,14 +152,14 @@ class SimulatorStore {
   }
 
   init = () => {
-    this.designeEngine = getEngine();
-    if (this.designeEngine) {
-      this.designeEngine.simulatorHost.on(EventName.Drop, (resolve) => {
+    this.designEngine = getEngine();
+    if (this.designEngine) {
+      this.designEngine.simulatorHost.on(EventName.Drop, (resolve) => {
         this.update();
         this.resolveRender = resolve;
       });
 
-      this.designeEngine.docTreeModel.on(EventName.NodePropsChange, () => {
+      this.designEngine.docTreeModel.on(EventName.NodePropsChange, () => {
         this.update();
 
         // 这里需要延迟一下才能获取到正确的位置，不然可能获取的位置属于样式变化的中间状态
@@ -159,19 +168,19 @@ class SimulatorStore {
         }, 200);
       });
 
-      this.designeEngine.simulatorHost.on(EventName.SelectNode, () => {
+      this.designEngine.simulatorHost.on(EventName.SelectNode, () => {
         this.setDetectionStyle();
       });
 
-      this.designeEngine.simulatorHost.on(EventName.HoverNode, () => {
+      this.designEngine.simulatorHost.on(EventName.HoverNode, () => {
         this.setDetectionHoverStyle();
       });
 
-      this.designeEngine.dragon.on(EventName.CreateDropPosition, (data) => {
+      this.designEngine.dragon.on(EventName.CreateDropPosition, (data) => {
         this.setInsertLineStyle(data);
       });
 
-      this.designeEngine.dragon.on(EventName.DragEnd, () => {
+      this.designEngine.dragon.on(EventName.DragEnd, () => {
         this.setInsertLineStyle();
       });
 

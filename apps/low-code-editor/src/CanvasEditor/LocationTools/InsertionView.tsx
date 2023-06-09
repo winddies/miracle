@@ -5,7 +5,7 @@ import { simulatorContext } from '../util';
 import * as styles from './index.module.less';
 
 export default observer(function InsertionView() {
-  const sumulator = useContext(simulatorContext);
+  const simulator = useContext(simulatorContext);
 
-  return <div className={styles.insertLine} style={toJS(sumulator.insertLineStyle)}></div>;
+  return <div className={styles.insertLine} style={toJS(simulator.insertLineStyle)}></div>;
 });
