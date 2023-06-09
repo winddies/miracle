@@ -13,11 +13,6 @@ import LeftSider from './layout/LeftSider';
 
 const { Content } = Layout;
 
-const contentStyle: React.CSSProperties = {
-  minHeight: 120,
-  display: 'flex',
-};
-
 export default function APP() {
   const [designEngine] = useState(container.resolve(DesignEngine));
 
