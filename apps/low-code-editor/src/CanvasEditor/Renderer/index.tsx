@@ -11,10 +11,10 @@ interface IProps {
 
 export default observer(function PageRenderer({ schema }: IProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const sumulator = useContext(simulatorContext);
+  const simulator = useContext(simulatorContext);
 
   useEffect(() => {
-    sumulator.mountNode(schema.id as string, ref.current);
+    simulator.mountNode(schema.id as string, ref.current);
   }, []);
 
   return (
