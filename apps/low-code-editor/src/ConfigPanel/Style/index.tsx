@@ -1,7 +1,7 @@
 import { Button, Collapse } from 'antd';
 import { observer } from 'mobx-react-lite';
 import { useEffect, useMemo } from 'react';
-import { FormProvider, useForm, useFormState } from 'react-hook-form';
+import { FormProvider, UseFormReturn, useForm, useFormState } from 'react-hook-form';
 import CssEditor from './CssEditor';
 import FontBox from './FontBox';
 import LayoutBox from './LayoutBox';
@@ -12,7 +12,7 @@ import * as styles from './index.module.less';
 
 export default observer(function Style() {
   const values = useMemo(() => store.style, [store.selectedNode]);
-  const methods = useForm({ values });
+  const methods: UseFormReturn = useForm({ values });
 
   const { dirtyFields } = useFormState({
     control: methods.control,
@@ -22,7 +22,7 @@ export default observer(function Style() {
     const subscription = methods.watch((value, { name, type }) => {
       if (!type || name === 'cssEditorValue') return;
       const data = { ...value };
-      store.updateStyle(data);
+      store.updateProps('style', data);
     });
     return subscription.unsubscribe;
   }, []);
@@ -44,7 +44,7 @@ export default observer(function Style() {
                 const value = { ...methods.getValues() };
                 value.customCss = value.cssEditorValue;
                 delete value.cssEditorValue;
-                store.updateStyle(value);
+                store.updateProps('style', value);
                 methods.resetField('cssEditorValue');
               }}
             >

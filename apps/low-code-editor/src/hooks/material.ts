@@ -1,4 +1,4 @@
-import { materials } from '@miracle/react-antd-materials';
+import { materials } from '@miracle/antd-materials';
 import { useMemo } from 'react';
 
 export function usePredefinedMaterials() {

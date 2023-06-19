@@ -1,26 +1,29 @@
 {
   "extends": "@tsconfig/recommended/tsconfig.json",
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "declaration": true,
-    "lib": ["DOM", "ESNext"],
-    "module": "ES2015",
-    "moduleResolution": "node",
-    "noImplicitAny": false,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "preserveConstEnums": true,
-    "sourceMap": true,
-    "strict": false,
-    "strictNullChecks": true,
-    "removeComments": false,
-    "resolveJsonModule": true,
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "paths": {
-      "@miracle/*": ["./packages/*"]
-    }
+
+    /* Bundler mode */
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "esModuleInterop": true
+    // "paths": {
+    //   "@miracle/*": ["../../packages/*"]
+    // },
   },
-  "include": ["./type.d.ts", "./packages/**/*"],
   "exclude": ["node_modules", "packages/dist/*", "packages/es/*"]
 }

@@ -1,4 +1,4 @@
-import { IComponentMaterial } from '@miracle/react-core/interface';
+import { IComponentMaterial } from '@miracle/react-core';
 import { Collapse, Row } from 'antd';
 import { useCallback, useEffect, useState } from 'react';
 import ResourceItem from './ResourceItem';

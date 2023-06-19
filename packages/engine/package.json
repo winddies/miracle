@@ -1,0 +1,22 @@
+{
+  "name": "@miracle/engine",
+  "version": "0.0.1",
+  "types": "lib/index.d.ts",
+  "module": "lib/index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "dependencies": {
+    "@miracle/antd-materials": "workspace:^0.0.1",
+    "@miracle/constants": "workspace:^0.0.1",
+    "@miracle/react-core": "workspace:^0.0.1"
+  }
+}

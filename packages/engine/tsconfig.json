@@ -1,0 +1,26 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "outDir": "lib",
+    "module": "ESNext",
+    "lib": ["dom", "esnext"],
+    "target": "ES6",
+    "moduleResolution": "node",
+    "allowJs": false,
+    "declaration": true,
+    "declarationDir": "lib",
+    "downlevelIteration": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "sourceMap": true,
+    "strictPropertyInitialization": false,
+    "noImplicitThis": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "baseUrl": "./"
+  },
+  "include": ["src/**/*", "./types"],
+  "exclude": ["lib", "node_modules", "packages"]
+  // "references": [{ "path": "./tsconfig.node.json" }]
+}

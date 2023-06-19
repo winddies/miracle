@@ -1,0 +1,26 @@
+{
+  "name": "@miracle/react-core",
+  "version": "0.0.1",
+  "types": "lib/index.d.ts",
+  "module": "lib/index.es.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && tsc"
+  },
+  "files": [
+    "lib"
+  ],
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.0.0",
+    "typescript": "^5.0.2",
+    "typescript-plugin-css-modules": "^5.0.1",
+    "vite": "^4.3.9"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "dependencies": {
+    "@miracle/constants": "workspace:^0.0.1"
+  }
+}

@@ -1,12 +1,13 @@
+import { getMaterialByName } from '@miracle/antd-materials';
 import { EventName } from '@miracle/constants';
-import type Node from '@miracle/docTreeModel/node';
-import DesigneEngine from '@miracle/engine';
+import { IEngine } from '@miracle/engine';
+import type Node from '@miracle/engine/lib/doc-tree/node';
 import { makeAutoObservable } from 'mobx';
 import { container } from 'tsyringe';
 
 class ConfigPanelStore {
   selectedNode: Node | null = null;
-  engine: DesigneEngine | null = null;
+  engine: IEngine | null = null;
 
   constructor() {
     makeAutoObservable(this);
@@ -37,16 +38,24 @@ class ConfigPanelStore {
     };
   }
 
-  updateStyle(style: Record<string, any>) {
-    for (const key in style) {
-      if (style[key] == null || !style[key]) {
-        delete style[key];
-      }
-    }
-    this.selectedNode?.props.setProp('style', style);
+  get propsSchema() {
+    const componentName = this.selectedNodeSchema?.componentName;
+    return componentName ? getMaterialByName(componentName)?.propSetFields : null;
   }
 
-  init(engine: DesigneEngine) {
+  updateProps(name: string, value: any) {
+    if (value && typeof value === 'object') {
+      for (const key in value) {
+        if (value[key] == null || !value[key]) {
+          delete value[key];
+        }
+      }
+    }
+
+    this.selectedNode?.props.setProp(name, value);
+  }
+
+  init(engine: IEngine) {
     this.engine = engine;
 
     if (!this.engine) {

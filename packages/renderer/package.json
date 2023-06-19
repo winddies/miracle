@@ -1,0 +1,31 @@
+{
+  "name": "@miracle/renderer",
+  "version": "0.0.1",
+  "types": "lib/index.d.ts",
+  "module": "lib/index.es.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && tsc"
+  },
+  "files": [
+    "lib"
+  ],
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.0.0",
+    "less": "^4.1.3",
+    "less-loader": "^11.1.0",
+    "typescript": "^5.0.2",
+    "typescript-plugin-css-modules": "^5.0.1",
+    "vite": "^4.3.9"
+  },
+  "dependencies": {
+    "inline-css-parser": "^0.3.0",
+    "@miracle/antd-materials": "workspace:^0.0.1",
+    "@miracle/constants": "workspace:^0.0.1",
+    "@miracle/react-core": "workspace:^0.0.1"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  }
+}

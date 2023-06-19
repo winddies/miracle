@@ -1,7 +1,7 @@
+import { getMaterialByName } from '@miracle/antd-materials';
 import { EventName, InsertSide, MIRACLE_NODE_ID } from '@miracle/constants';
 import { IEngine } from '@miracle/engine';
-import { materials } from '@miracle/react-antd-materials';
-import { ISchema } from '@miracle/react-core/interface';
+import { ISchema } from '@miracle/react-core';
 import { makeAutoObservable } from 'mobx';
 import { container, singleton } from 'tsyringe';
 import { getEngine, isHTMLElement } from './util';
@@ -12,7 +12,7 @@ class SimulatorStore {
 
   schema: ISchema | null = null;
 
-  resolveRender: () => Promise<void>;
+  resolveRender: () => Promise<void> | null = () => null;
 
   insertLineStyle = {};
   detectionStyle = {};
@@ -23,7 +23,7 @@ class SimulatorStore {
   }
 
   getComponentBySchema(schema: ISchema) {
-    return this.designEngine?.getComponentBySchema(materials, schema);
+    return getMaterialByName(schema.componentName);
   }
 
   mountNode(id: string, reactDom: HTMLElement | null) {
@@ -32,6 +32,10 @@ class SimulatorStore {
     const isElement = isHTMLElement(dom);
     if (!isElement) {
       dom = document.querySelector(`[${MIRACLE_NODE_ID}=${id}]`);
+    }
+
+    if (!dom) {
+      throw new Error('mountNode: dom is null');
     }
 
     dom?.setAttribute(MIRACLE_NODE_ID, id);

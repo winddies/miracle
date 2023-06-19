@@ -10,7 +10,7 @@ import * as styles from './index.module.less';
 const layout = { labelCol: { span: 7 }, wrapperCol: { span: 12 } };
 
 export default function FontBox() {
-  const { control, getValues } = useFormContext();
+  const { control } = useFormContext();
 
   return (
     <Form {...layout}>

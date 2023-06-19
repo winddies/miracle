@@ -1,7 +1,6 @@
 import DesignEngine from '@miracle/engine';
 import { Layout } from 'antd';
 import { useLayoutEffect, useState } from 'react';
-import { container } from 'tsyringe';
 import FrameEditor from './CanvasEditor';
 import ConfigPanel from './ConfigPanel';
 import * as styles from './index.module.less';
@@ -14,7 +13,7 @@ import LeftSider from './layout/LeftSider';
 const { Content } = Layout;
 
 export default function APP() {
-  const [designEngine] = useState(container.resolve(DesignEngine));
+  const [designEngine] = useState(DesignEngine);
 
   useLayoutEffect(() => {
     designEngine.init();

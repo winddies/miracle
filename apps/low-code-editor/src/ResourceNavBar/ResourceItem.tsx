@@ -1,8 +1,8 @@
-import { IComponentMaterial } from '@miracle/react-core/interface';
+import { IComponentMaterial } from '@miracle/react-core';
 import Col from 'antd/es/col';
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef } from 'react';
+import { engineContext } from '../utils/context';
 import * as styles from './index.module.less';
-import ResourceStore from './store';
 
 interface IProps {
   data: IComponentMaterial;
@@ -10,11 +10,11 @@ interface IProps {
 
 export default function ResourceItem({ data }: IProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const [store] = useState(ResourceStore);
+  const engine = useContext(engineContext);
 
   useEffect(() => {
     if (ref.current) {
-      store.init(ref.current, data);
+      engine.dragon.bindResource(ref.current, data);
     }
   }, []);
 

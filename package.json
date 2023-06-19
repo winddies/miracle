@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "private": true,
   "scripts": {
+    "bootstrap": "pnpm i --frozen-lockfile",
+    "start:app": "nx run @miracle/platform:dev",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build:all": "nx run-many -t build",
     "prepare": "is-ci || husky install",
     "eslint": "npx eslint src --ext .js,.ts,.jsx,.tsx",
     "eslint:fix": "npx eslint src --fix --ext .js,.ts,.jsx,.tsx",
@@ -21,21 +25,27 @@
     "eventemitter3": "^5.0.1",
     "lodash": "^4.17.21",
     "mobx": "^6.9.0",
+    "mobx-react-lite": "^3.4.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.44.2",
     "reflect-metadata": "^0.1.13",
     "ts-node": "^10.9.1",
-    "tsyringe": "^4.7.0",
-    "typescript": "^5.0.4"
+    "tsyringe": "^4.7.0"
   },
   "devDependencies": {
     "@bud-fe/f2elint": "^0.2.1",
     "@types/lodash": "^4.14.195",
+    "@types/node": "^18.15.13",
     "@types/react": "^18.2.7",
     "@types/react-dom": "^18.2.4",
+    "@vitejs/plugin-react": "^4.0.0",
     "cross-env": "^7.0.3",
-    "ts-loader": "^9.4.3"
+    "nx": "^16.3.2",
+    "ts-loader": "^9.4.3",
+    "typescript": "^5.0.4",
+    "typescript-plugin-css-modules": "^5.0.1",
+    "vite": "^4.3.9"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json}": [

@@ -1,32 +1,12 @@
 {
-  "compileOnSave": true,
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "jsx": "react-jsx",
-    "outDir": "./dist/",
-    "module": "ESNext",
-    "lib": ["dom", "esnext"],
-    "target": "ES6",
-    "moduleResolution": "node",
-    "allowJs": false,
-    "declaration": true,
-    "declarationDir": "dist",
-    "downlevelIteration": true,
-    "strict": true,
-    "strictNullChecks": true,
-    "sourceMap": true,
-    "strictPropertyInitialization": false,
-    "noImplicitThis": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
     "baseUrl": "./",
-    "typeRoots": ["./types", "./node_modules/@types"],
-    "paths": {
-      "@miracle/*": ["../../packages/*"]
-    },
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "plugins": [{ "name": "typescript-plugin-css-modules" }]
+    "plugins": [{ "name": "typescript-plugin-css-modules" }],
+    "typeRoots": ["types", "node_modules/@types"],
+    "noEmit": false
   },
-  "include": ["./custom.type.d.ts", "./src/**/*"],
-  "exclude": ["demo", "dist", "node_modules"]
+  "include": ["src/**/*", "types/typings.d.ts"],
+  "exclude": ["lib", "node_modules", "packages"]
+  // "references": [{ "path": "./tsconfig.node.json" }]
 }

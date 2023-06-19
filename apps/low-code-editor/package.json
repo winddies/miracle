@@ -1,5 +1,5 @@
 {
-  "name": "low-code-editor",
+  "name": "@miracle/platform",
   "version": "1.0.0",
   "description": "",
   "scripts": {
@@ -18,8 +18,6 @@
   },
   "license": "ISC",
   "devDependencies": {
-    "@types/node": "^18.15.13",
-    "@types/react": "^18.0.38",
     "@types/react-router-dom": "^5.3.3",
     "css-loader": "^6.7.3",
     "file-loader": "^6.2.0",
@@ -38,17 +36,14 @@
   },
   "dependencies": {
     "@ant-design/icons": "^5.0.1",
-    "@fortawesome/fontawesome-svg-core": "^6.4.0",
-    "@fortawesome/free-solid-svg-icons": "^6.4.0",
-    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@miracle/antd-materials": "workspace:^0.0.1",
+    "@miracle/constants": "workspace:^0.0.1",
+    "@miracle/engine": "workspace:^0.0.1",
+    "@miracle/form-control": "workspace:^0.0.1",
+    "@miracle/react-core": "workspace:^0.0.1",
+    "@miracle/renderer": "workspace:^0.0.1",
     "@monaco-editor/react": "^4.5.1",
     "antd": "^5.5.2",
-    "inline-css-parser": "^0.3.0",
-    "mobx": "^6.9.0",
-    "mobx-react-lite": "^3.4.3",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.10.0",
-    "zustand": "^4.3.7"
+    "react-router-dom": "^6.10.0"
   }
 }

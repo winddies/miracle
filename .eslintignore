@@ -1,7 +1,7 @@
 # 忽略目录
 node_modules/
 build/
-dist/
+lib/
 tests/
 
 # for 飞冰框架项目
