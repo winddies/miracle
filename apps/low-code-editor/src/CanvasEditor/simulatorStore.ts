@@ -8,19 +8,19 @@ import { getEngine, isHTMLElement } from './util';
 
 @singleton()
 class SimulatorStore {
-  designEngine: IEngine | null = null;
-
-  schema: ISchema | null = null;
-
-  resolveRender: () => Promise<void> | null = () => null;
-
   insertLineStyle = {};
   detectionStyle = {};
   detectionHoverStyle = {};
 
+  designEngine: IEngine | null = null;
+
+  schema: ISchema | null = null;
+
   constructor() {
     makeAutoObservable(this);
   }
+
+  resolveRender: () => Promise<void> | null = () => null;
 
   getComponentBySchema(schema: ISchema) {
     return getMaterialByName(schema.componentName);
@@ -64,10 +64,9 @@ class SimulatorStore {
       this.detectionStyle = {
         width,
         height,
-        left: left - 1,
-        top: top - 1,
-        border: '2px solid #1677ff',
-        transparent: true,
+        left,
+        top,
+        outline: '2px solid #1677ff',
       };
     }
   }
@@ -81,9 +80,9 @@ class SimulatorStore {
       this.detectionHoverStyle = {
         width,
         height,
-        left: left - 1,
-        top: top - 1,
-        border: '1px dashed #1677ff',
+        left,
+        top,
+        outline: '1px dashed #1677ff',
       };
     }
   }

@@ -19,13 +19,8 @@ export default function LeftSider() {
   const iconWidth = collapsed ? '60px' : '100px';
 
   return (
-    <Sider
-      className={styles['left-sider']}
-      collapsible
-      collapsed={collapsed}
-      onCollapse={(value) => setCollapsed(value)}
-    >
-      <div className={styles['icon-container']}>
+    <Sider className={styles.leftSider} collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
+      <div className={styles.iconContainer}>
         <img src={Logo} style={{ width: iconWidth }} />
       </div>
       <Menu

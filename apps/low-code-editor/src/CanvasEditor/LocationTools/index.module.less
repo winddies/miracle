@@ -9,10 +9,15 @@
   }
 
   .insertLine,
-  .detection,
-  .detectionHover {
-    position: absolute;
+  .detection {
+    position: fixed;
     pointer-events: none;
+    outline-offset: -2px;
+  }
+
+  .detectionHover {
+    position: fixed;
+    outline-offset: -1px;
   }
 
   .actionTools {

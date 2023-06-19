@@ -1,3 +1,4 @@
+import '@miracle/antd-materials/lib/style.css';
 import { observer } from 'mobx-react-lite';
 import { useContext, useEffect, useRef } from 'react';
 import { engineContext } from 'src/utils/context';
