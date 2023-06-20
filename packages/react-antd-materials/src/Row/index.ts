@@ -16,9 +16,6 @@ export const RowMaterial: IComponentMaterial = {
   },
   schema: {
     componentName: 'Row',
-    props: {
-      style: { height: 40 },
-    },
   },
   behaviorRule: {
     droppable: true,

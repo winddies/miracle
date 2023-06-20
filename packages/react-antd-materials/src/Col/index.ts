@@ -3,8 +3,10 @@
 import { ContainerType } from '@miracle/constants';
 import { IComponentMaterial } from '@miracle/react-core';
 import Col from 'antd/lib/col';
-import { makeComponentDesignClass } from '..//utils';
+import { makeComponentDesignClass } from '../utils';
 import Icon from './icon.svg';
+import './index.less';
+import { propSetFields } from './propSetFields';
 
 export const ColMaterial: IComponentMaterial = {
   name: 'Col',
@@ -15,11 +17,12 @@ export const ColMaterial: IComponentMaterial = {
   designProps: {
     className: makeComponentDesignClass('col'),
   },
+  propSetFields,
   schema: {
     componentName: 'Col',
     // type: ComponentType.SingleControl,
     props: {
-      style: { height: 40 },
+      span: 8,
     },
   },
   behaviorRule: {

@@ -6,7 +6,6 @@ import store from '../store';
 export default observer(function Props() {
   const propSchema = useMemo(() => store.propsSchema, [store.selectedNode]);
   const formService = useMemo(() => new FormService(), [store.selectedNode]);
-  console.log('propSchema', propSchema);
 
   useEffect(() => {
     const subscription = formService.methods?.watch((value, { name }) => {
