@@ -6,7 +6,6 @@ export const schema = {
     children: '按钮',
     style: {
       width: 150,
-      marginTop: 10,
     },
   },
 };
