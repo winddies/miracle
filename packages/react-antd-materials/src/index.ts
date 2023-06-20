@@ -1,13 +1,12 @@
 import { IComponentMaterial } from '@miracle/react-core';
 import { ButtonMaterial } from './Button';
+import { ColMaterial } from './Col';
 import { RadioMaterial } from './Radio';
 import { RowMaterial } from './Row';
 import { SelectMaterial } from './Select';
 
 import { InputMaterial } from './Input';
 import { SwitchMaterial } from './Switch';
-
-import './Row/index.less';
 
 export interface IMaterial {
   group: string;
@@ -25,7 +24,7 @@ export const materials = [
   },
   {
     group: 'layout',
-    items: [RowMaterial],
+    items: [RowMaterial, ColMaterial],
   },
 ];
 

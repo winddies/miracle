@@ -3,6 +3,7 @@ import { IComponentMaterial } from '@miracle/react-core';
 import Row from 'antd/lib/row';
 import { makeComponentDesignClass } from '../utils';
 import Icon from './icon.svg';
+import './index.less';
 
 export const RowMaterial: IComponentMaterial = {
   name: 'Row',
