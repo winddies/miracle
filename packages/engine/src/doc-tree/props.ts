@@ -3,10 +3,10 @@ import type DocTreeModel from './index';
 import type Node from './node';
 
 const isValidPropValue = (value: any) => {
-  if (value == null) return false;
+  /* eslint-disable-next-line no-self-compare */
+  if (value == null || value !== value) return false;
   if (typeof value === 'string' && value.trim() === '') return false;
   if (typeof value === 'object' && isEmpty(value)) return false;
-  if (isNaN(value)) return false;
 
   return true;
 };
