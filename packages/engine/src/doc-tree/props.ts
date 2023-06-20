@@ -4,7 +4,7 @@ import type Node from './node';
 
 const isValidPropValue = (value: any) => {
   /* eslint-disable-next-line no-self-compare */
-  if (value == null || value !== value) return false;
+  if (value == null || Number.isNaN(value)) return false;
   if (typeof value === 'string' && value.trim() === '') return false;
   if (typeof value === 'object' && isEmpty(value)) return false;
 
