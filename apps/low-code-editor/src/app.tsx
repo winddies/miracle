@@ -29,6 +29,7 @@ export default function APP() {
           <Content className={styles.contentLayout}>
             <SideBar />
             <Content className={styles.main}>
+              {/* <OperationBar /> */}
               <CanvasController />
               <FrameEditor />
             </Content>
