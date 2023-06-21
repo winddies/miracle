@@ -8,8 +8,9 @@ export default observer(function LocationTools() {
   return (
     <div className={styles.locationTools}>
       <InsertionView />
-      <Detection />
+
       <DetectionHover />
+      <Detection />
     </div>
   );
 });

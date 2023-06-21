@@ -37,6 +37,7 @@
   "dependencies": {
     "@ant-design/icons": "^5.0.1",
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
+    "@fortawesome/free-regular-svg-icons": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@miracle/antd-materials": "workspace:^0.0.1",

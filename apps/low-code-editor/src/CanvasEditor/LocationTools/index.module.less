@@ -1,7 +1,5 @@
 .locationTools {
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: relative;
 
   .insertLine {
     transition: all 0.2s;
@@ -18,13 +16,24 @@
   .detectionHover {
     position: fixed;
     outline-offset: -1px;
+    // pointer-events: none;
   }
 
   .actionTools {
     position: absolute;
     pointer-events: auto;
-    top: -21px;
     right: 0;
+    background-color: #1677ff;
+    padding: 3px 4px;
+    display: flex;
+    align-items: center;
+    border-radius: 0 0 3px 3px;
+
+    .actionIcon {
+      color: #fff;
+      cursor: pointer;
+      font-size: 13px;
+    }
   }
 
   .detection,

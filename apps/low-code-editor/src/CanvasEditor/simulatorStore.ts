@@ -11,6 +11,7 @@ class SimulatorStore {
   insertLineStyle = {};
   detectionStyle = {};
   detectionHoverStyle = {};
+  actionToolsPosition = {};
 
   designEngine: IEngine | null = null;
 
@@ -67,6 +68,13 @@ class SimulatorStore {
         left,
         top,
         outline: '2px solid #1677ff',
+      };
+      this.actionToolsPosition = {
+        positionStyle: {
+          top: top < 20 ? 'auto' : '-17px',
+          bottom: top < 20 ? '-17px' : 'auto',
+        },
+        placement: left >= 0 ? 'right' : 'left',
       };
     }
   }

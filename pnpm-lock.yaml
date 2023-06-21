@@ -59,6 +59,7 @@ importers:
     specifiers:
       '@ant-design/icons': ^5.0.1
       '@fortawesome/fontawesome-svg-core': ^6.4.0
+      '@fortawesome/free-regular-svg-icons': ^6.4.0
       '@fortawesome/free-solid-svg-icons': ^6.4.0
       '@fortawesome/react-fontawesome': ^0.2.0
       '@miracle/antd-materials': workspace:^0.0.1
@@ -88,6 +89,7 @@ importers:
     dependencies:
       '@ant-design/icons': 5.0.1
       '@fortawesome/fontawesome-svg-core': 6.4.0
+      '@fortawesome/free-regular-svg-icons': 6.4.0
       '@fortawesome/free-solid-svg-icons': 6.4.0
       '@fortawesome/react-fontawesome': 0.2.0_ns3tanzake47edvtuk73yvnw7a
       '@miracle/antd-materials': link:../../packages/react-antd-materials
@@ -1144,6 +1146,14 @@ packages:
 
   /@fortawesome/fontawesome-svg-core/6.4.0:
     resolution: {integrity: sha512-Bertv8xOiVELz5raB2FlXDPKt+m94MQ3JgDfsVbrqNpLU9+UE2E18GKjLKw+d3XbeYPqg1pzyQKGsrzbw+pPaw==}
+    engines: {node: '>=6'}
+    requiresBuild: true
+    dependencies:
+      '@fortawesome/fontawesome-common-types': 6.4.0
+    dev: false
+
+  /@fortawesome/free-regular-svg-icons/6.4.0:
+    resolution: {integrity: sha512-ZfycI7D0KWPZtf7wtMFnQxs8qjBXArRzczABuMQqecA/nXohquJ5J/RCR77PmY5qGWkxAZDxpnUFVXKwtY/jPw==}
     engines: {node: '>=6'}
     requiresBuild: true
     dependencies:
