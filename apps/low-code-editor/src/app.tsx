@@ -9,6 +9,7 @@ import SideBar from './layout/SideBar';
 import { engineContext } from './utils/context';
 
 import LeftSider from './layout/LeftSider';
+import OperationBar from './layout/OperationBar';
 
 const { Content } = Layout;
 
@@ -28,6 +29,7 @@ export default function APP() {
           <Content className={styles['contentLayout']}>
             <SideBar />
             <Content className={styles['main']}>
+              <OperationBar />
               <FrameEditor />
             </Content>
             <ConfigPanel />
