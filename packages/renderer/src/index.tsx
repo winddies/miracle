@@ -18,8 +18,6 @@ export default function PageRenderer({ schema, designMode, store }: Props) {
     }
   }, []);
 
-  console.log('schema', schema);
-
   // console.log('schema', schema, styles.pageContainer);
 
   return (

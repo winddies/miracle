@@ -20,12 +20,9 @@ export default function SingleControlComponent({ schema }: IProps) {
     }
   }, []);
 
-  console.log('child schema', schema);
-
   const view = useMemo(() => {
     const material = getMaterialByName(schema.componentName);
     if (!material) return null;
-    console.log('material', material);
     const { style, children, ...others } = schema.props || {};
     const { customCss, ...otherStyles } = toJS(style) || {};
     const { noRef, draggable } = material.behaviorRule;
