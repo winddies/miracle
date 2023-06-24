@@ -42,8 +42,12 @@ export default class Node {
   getBoundingClientRect() {
     const domNode = this.docTreeModel.reactDomCollector.domNodeMap.get(this.id);
     if (domNode) {
-      return domNode.dom.getBoundingClientRect();
+      return domNode.getBoundingClientRect();
     }
+  }
+
+  getOriginDom() {
+    return this.docTreeModel.reactDomCollector.domNodeMap.get(this.id);
   }
 
   removeChild(child: Node) {

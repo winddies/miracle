@@ -1,20 +1,12 @@
 import { singleton } from 'tsyringe';
 
-export interface DomNode {
-  dom: HTMLElement;
-  rect: DOMRect;
-}
-
 @singleton()
 export default class ReactDomCollector {
-  domNodeMap: Map<string, DomNode | null> = new Map();
+  domNodeMap: Map<string, HTMLElement | null> = new Map();
 
   mount(id: string, domElement: HTMLElement | null) {
     if (domElement) {
-      this.domNodeMap.set(id, {
-        dom: domElement,
-        rect: domElement.getBoundingClientRect(),
-      });
+      this.domNodeMap.set(id, domElement);
     } else {
       this.domNodeMap.set(id, null);
     }
