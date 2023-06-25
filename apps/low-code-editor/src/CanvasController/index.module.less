@@ -1,0 +1,52 @@
+.canvasController {
+  display: flex;
+  height: 46px;
+  outline: 1px solid #eee;
+  padding: 10px 10px;
+  background-color: #fff;
+  margin-bottom: 10px;
+  align-items: center;
+
+  img {
+    width: 20px;
+    cursor: pointer;
+  }
+
+  .divider {
+    height: 24px;
+    border-color: #d4d0d0;
+    margin-top: 2px;
+  }
+
+  .arrowDown {
+    width: 10px;
+    height: 10px;
+    color: #b8b3b3;
+  }
+
+  .btnActive {
+    background-color: rgba(0, 0, 0, 0.06);
+  }
+
+  :global(.ant-btn) {
+    line-height: 32px;
+  }
+}
+
+.label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .size {
+    font-size: 12px;
+    margin-left: 10px;
+    color: #837d7d;
+  }
+}
+
+.dropdown {
+  li {
+    padding: 7px 14px !important;
+  }
+}

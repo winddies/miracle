@@ -1,4 +1,3 @@
-import { DisplayType } from '@miracle/constants';
 import { IComponentMaterial } from '@miracle/react-core';
 import Select from 'antd/lib/select';
 import Icon from './icon.svg';
@@ -8,7 +7,6 @@ export const SelectMaterial: IComponentMaterial = {
   name: 'Select',
   group: 'input',
   component: Select,
-  display: DisplayType.Inline,
   designProps: {
     open: false,
   },

@@ -29,7 +29,7 @@ export default observer(function SimulatorRender() {
   }, [store.schema]);
 
   return (
-    <div className={styles.iframeRoot} ref={ref}>
+    <div ref={ref} className={styles.iframeRoot}>
       <simulatorContext.Provider value={store}>
         {canvasView}
         <LocationTools />

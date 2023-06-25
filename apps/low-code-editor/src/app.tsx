@@ -8,8 +8,8 @@ import Header from './layout/Header';
 import SideBar from './layout/SideBar';
 import { engineContext } from './utils/context';
 
+import CanvasController from './CanvasController';
 import LeftSider from './layout/LeftSider';
-import OperationBar from './layout/OperationBar';
 
 const { Content } = Layout;
 
@@ -26,10 +26,10 @@ export default function APP() {
         <LeftSider />
         <Layout>
           <Header />
-          <Content className={styles['contentLayout']}>
+          <Content className={styles.contentLayout}>
             <SideBar />
-            <Content className={styles['main']}>
-              <OperationBar />
+            <Content className={styles.main}>
+              <CanvasController />
               <FrameEditor />
             </Content>
             <ConfigPanel />

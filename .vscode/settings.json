@@ -15,5 +15,6 @@
     "*.json": "jsonc"
   },
   "typescript.tsdk": "node_modules/typescript/lib",
-  "cSpell.words": ["Antd", "fontawesome", "fortawesome", "Sider", "tsyringe"]
+  "cSpell.words": ["Antd", "classnames", "fontawesome", "fortawesome", "postcss", "Sider", "tsyringe"],
+  "svg.preview.background": "editor"
 }
