@@ -187,6 +187,10 @@ class SimulatorStore {
         this.setInsertLineStyle();
       });
 
+      this.designEngine.dragon.on(EventName.DragLeave, () => {
+        this.setInsertLineStyle();
+      });
+
       this.update();
     }
   };

@@ -1,4 +1,4 @@
-import { ContainerType, DisplayType } from '@miracle/constants';
+import { ContainerType } from '@miracle/constants';
 import React from 'react';
 
 export interface IBehaviorRule {
@@ -42,7 +42,6 @@ export interface IComponentMaterial {
   component: React.FC<any> | React.ComponentClass<any>;
   resourceConfig: IResourceConfig;
   behaviorRule: IBehaviorRule;
-  display?: DisplayType;
   propSetFields?: FormSchema;
   designProps?: Record<string, any>;
 }

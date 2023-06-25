@@ -63,6 +63,11 @@ export default class Dragon extends EventEmitter {
     this.emit(EventName.DragEnd);
   };
 
+  onDragLeave = () => {
+    this.dropLocation = null;
+    this.emit(EventName.DragLeave);
+  };
+
   onDragOver(e: DragEvent) {
     if (this.dragObject) {
       const dragPoint = {
@@ -79,6 +84,7 @@ export default class Dragon extends EventEmitter {
 
     // 1. 找出包含当前 point 的最近的一个 node
     const closetWrapperNode = this.docTreeModel.getClosetWrapperNodeByLocation(dragPoint);
+
     if (!closetWrapperNode || isSameNode(closetWrapperNode)) return null;
 
     const closetNodeMaterial = closetWrapperNode.exportNodeMaterial();

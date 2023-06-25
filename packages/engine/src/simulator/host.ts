@@ -35,6 +35,10 @@ export default class SimulatorHost extends EventEmitter {
       this.dragon.onDragOver(e);
     });
 
+    this.iframeDocument?.addEventListener('dragleave', () => {
+      this.dragon.onDragLeave();
+    });
+
     this.iframeDocument?.addEventListener('dragstart', (e) => {
       const node = this.getNodeByDomElement(e.target as HTMLElement);
       if (node) {
@@ -49,6 +53,10 @@ export default class SimulatorHost extends EventEmitter {
 
     this.iframeDocument?.addEventListener('dragend', () => {
       this.dragon.onDragEnd();
+    });
+
+    this.iframeDocument?.addEventListener('mouseleave', () => {
+      this.setHoverNode(null);
     });
 
     this.iframeDocument?.addEventListener('mouseup', (e) => {
