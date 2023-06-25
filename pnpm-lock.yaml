@@ -1250,8 +1250,9 @@ packages:
     dev: false
 
   /@fortawesome/free-regular-svg-icons/6.4.0:
-    resolution: {integrity: sha512-ZfycI7D0KWPZtf7wtMFnQxs8qjBXArRzczABuMQqecA/nXohquJ5J/RCR77PmY5qGWkxAZDxpnUFVXKwtY/jPw==}
-    engines: {node: '>=6'}
+    resolution:
+      { integrity: sha512-ZfycI7D0KWPZtf7wtMFnQxs8qjBXArRzczABuMQqecA/nXohquJ5J/RCR77PmY5qGWkxAZDxpnUFVXKwtY/jPw== }
+    engines: { node: '>=6' }
     requiresBuild: true
     dependencies:
       '@fortawesome/fontawesome-common-types': 6.4.0
