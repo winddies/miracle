@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 import CanvasRender from './CanvasEditor/SimulatorRender';
-import PreviewRender from './Preview';
+import PreviewRender from './Preview/PreviewPage';
 import App from './app';
 // import CanvasEditor from './CanvasEditor';
 

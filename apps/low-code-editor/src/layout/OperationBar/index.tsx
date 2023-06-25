@@ -3,14 +3,17 @@ import { faArrowRotateLeft, faArrowRotateRight, faCode } from '@fortawesome/free
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Button, Divider, Space, Tooltip } from 'antd';
 import { observer } from 'mobx-react-lite';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import PreviewJson from 'src/Preview/PreviewJson';
 import { engineContext } from 'src/utils/context';
 import * as styles from './index.module.less';
 
 export default observer(function OperationBar() {
   const engine = useContext(engineContext);
   const navigate = useNavigate();
+  const [showJson, setShowJson] = useState(false);
+  const [preJsonId, setPreJsonId] = useState('');
   const operations = [
     {
       key: 'action-group',
@@ -46,6 +49,17 @@ export default observer(function OperationBar() {
       key: 'preview-json',
       title: '查看Json',
       icon: faCode,
+      onClick: () => {
+        const newPreJsonId = `preJsonId-${new Date().getTime()}`;
+        setPreJsonId(newPreJsonId);
+        const schema = engine.docTreeModel?.getSchema();
+        if (schema) {
+          sessionStorage.setItem(newPreJsonId, JSON.stringify(schema));
+          setShowJson(true);
+        } else {
+          console.log('schema is empty');
+        }
+      },
     },
   ];
 
@@ -87,6 +101,7 @@ export default observer(function OperationBar() {
           );
         })}
       </Space>
+      <PreviewJson open={showJson} onClose={() => setShowJson(false)} preId={preJsonId} />
     </div>
   );
 });
