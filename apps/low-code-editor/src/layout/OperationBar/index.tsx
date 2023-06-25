@@ -2,9 +2,15 @@ import { faCirclePlay } from '@fortawesome/free-regular-svg-icons';
 import { faArrowRotateLeft, faArrowRotateRight, faCode } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Button, Divider, Space, Tooltip } from 'antd';
+import { observer } from 'mobx-react-lite';
+import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { engineContext } from 'src/utils/context';
 import * as styles from './index.module.less';
 
-export default function OperationBar() {
+export default observer(function OperationBar() {
+  const engine = useContext(engineContext);
+  const navigate = useNavigate();
   const operations = [
     {
       key: 'action-group',
@@ -25,6 +31,16 @@ export default function OperationBar() {
       key: 'preview',
       title: '预览',
       icon: faCirclePlay,
+      onClick: () => {
+        const preId = `preId-${new Date().getTime()}`;
+        const schema = engine.docTreeModel?.getSchema();
+        if (schema) {
+          sessionStorage.setItem(preId, JSON.stringify(schema));
+          navigate(`/preview/${preId}`);
+        } else {
+          console.log('schema is empty');
+        }
+      },
     },
     {
       key: 'preview-json',
@@ -40,10 +56,10 @@ export default function OperationBar() {
     onClick?: () => void;
   }
   const IconItem = (props: IIconItemProps) => {
-    const { icon, title, key } = props;
+    const { icon, title, key, ...rest } = props;
     return (
       <Tooltip title={title} key={key}>
-        <Button icon={<FontAwesomeIcon icon={icon} />} type="text" />
+        <Button icon={<FontAwesomeIcon icon={icon} />} type="text" {...rest} />
       </Tooltip>
     );
   };
@@ -61,9 +77,16 @@ export default function OperationBar() {
               </div>
             );
           }
-          return <IconItem key={operation.key} icon={operation.icon} title={operation.title} />;
+          return (
+            <IconItem
+              icon={operation.icon}
+              title={operation.title}
+              key={operation.key}
+              onClick={() => operation.onClick?.()}
+            />
+          );
         })}
       </Space>
     </div>
   );
-}
+});
