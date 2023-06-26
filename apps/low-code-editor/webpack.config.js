@@ -11,6 +11,7 @@ module.exports = {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
     chunkFilename: '[name].[hash].chunk.js',
+    publicPath: '/',
   },
   devtool: 'source-map',
   resolve: {

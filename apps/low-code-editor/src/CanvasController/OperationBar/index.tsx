@@ -1,17 +1,17 @@
-import { faCirclePlay } from '@fortawesome/free-regular-svg-icons';
-import { faArrowRotateLeft, faArrowRotateRight, faCode } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Button, Divider, Space, Tooltip } from 'antd';
+import { Button, Space, Tooltip } from 'antd';
 import { observer } from 'mobx-react-lite';
 import { useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import PreviewJson from 'src/Preview/PreviewJson';
 import { engineContext } from 'src/utils/context';
+import Divider from '../Divider';
+import PreviewIcon from './Play.svg';
+import CodeIcon from './code.svg';
 import * as styles from './index.module.less';
+import RedoIcon from './redo.svg';
+import UndoIcon from './undo.svg';
 
 export default observer(function OperationBar() {
   const engine = useContext(engineContext);
-  const navigate = useNavigate();
   const [showJson, setShowJson] = useState(false);
   const [preJsonId, setPreJsonId] = useState('');
   const operations = [
@@ -21,25 +21,25 @@ export default observer(function OperationBar() {
         {
           key: 'undo',
           title: '撤销',
-          icon: faArrowRotateLeft,
+          icon: UndoIcon,
         },
         {
           key: 'redo',
           title: '恢复',
-          icon: faArrowRotateRight,
+          icon: RedoIcon,
         },
       ],
     },
     {
       key: 'preview',
       title: '预览',
-      icon: faCirclePlay,
+      icon: PreviewIcon,
       onClick: () => {
         const preId = `preId-${new Date().getTime()}`;
         const schema = engine.docTreeModel?.getSchema();
         if (schema) {
           sessionStorage.setItem(preId, JSON.stringify(schema));
-          navigate(`/preview/${preId}`);
+          window.open(`/preview/${preId}`);
         } else {
           console.log('schema is empty');
         }
@@ -48,7 +48,7 @@ export default observer(function OperationBar() {
     {
       key: 'preview-json',
       title: '查看Json',
-      icon: faCode,
+      icon: CodeIcon,
       onClick: () => {
         const newPreJsonId = `preJsonId-${new Date().getTime()}`;
         setPreJsonId(newPreJsonId);
@@ -73,14 +73,16 @@ export default observer(function OperationBar() {
     const { icon, title, key, ...rest } = props;
     return (
       <Tooltip title={title} key={key}>
-        <Button icon={<FontAwesomeIcon icon={icon} />} type="text" {...rest} />
+        <Button type="text" {...rest}>
+          <img src={icon} alt={icon} />
+        </Button>
       </Tooltip>
     );
   };
 
   return (
     <div className={styles['container']}>
-      <Space split={<Divider type="vertical" />}>
+      <Space split={<Divider />}>
         {operations.map((operation) => {
           if (operation.items) {
             return (

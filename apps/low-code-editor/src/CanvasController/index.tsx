@@ -1,11 +1,13 @@
 import { DownOutlined } from '@ant-design/icons';
 import { CanvasDisplayMode, MobileModel, mobileModelToSize } from '@miracle/constants';
-import { Button, Divider, Dropdown, Space, Tooltip } from 'antd';
+import { Button, Dropdown, Space, Tooltip } from 'antd';
 import classNames from 'classnames';
 import { values } from 'lodash';
 import { observer } from 'mobx-react-lite';
 import { useContext, useEffect } from 'react';
 import { engineContext } from 'src/utils/context';
+import Divider from './Divider';
+import OperationBar from './OperationBar';
 import * as styles from './index.module.less';
 import Mobile from './mobile.svg';
 import PC from './pc.svg';
@@ -55,7 +57,7 @@ export default observer(function CanvasController() {
           </Button>
         </Tooltip>
       </Space>
-      <Divider type="vertical" className={styles.divider} />
+      <Divider />
       {!store.isPcPlatform && (
         <Space style={{ marginLeft: 10 }}>
           <Dropdown
@@ -70,6 +72,7 @@ export default observer(function CanvasController() {
           </Dropdown>
         </Space>
       )}
+      <OperationBar />
     </div>
   );
 });
