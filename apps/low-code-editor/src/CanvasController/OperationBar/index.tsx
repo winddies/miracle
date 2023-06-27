@@ -22,11 +22,17 @@ export default observer(function OperationBar() {
           key: 'undo',
           title: '撤销',
           icon: UndoIcon,
+          onClick: () => {
+            engine.docTreeModel?.undo();
+          },
         },
         {
           key: 'redo',
-          title: '恢复',
+          title: '回滚',
           icon: RedoIcon,
+          onClick: () => {
+            engine.docTreeModel?.redo();
+          },
         },
       ],
     },
@@ -88,7 +94,7 @@ export default observer(function OperationBar() {
             return (
               <div key={operation.key}>
                 {operation.items.map((item) => (
-                  <IconItem key={item.key} icon={item.icon} title={item.title} />
+                  <IconItem key={item.key} icon={item.icon} title={item.title} onClick={() => item.onClick?.()} />
                 ))}
               </div>
             );

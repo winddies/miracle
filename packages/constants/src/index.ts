@@ -9,6 +9,8 @@ export enum EventName {
   NodePropsChange = 'nodePropsChange',
   Resize = 'resize',
   CanvasSizeChange = 'canvasSizeChange',
+  Undo = 'undo',
+  Redo = 'redo',
 }
 
 export const MIRACLE_NODE_ID = 'miracle-node-id';

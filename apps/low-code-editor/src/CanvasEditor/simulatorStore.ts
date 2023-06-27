@@ -2,7 +2,7 @@ import { getMaterialByName } from '@miracle/antd-materials';
 import { EventName, InsertSide, MIRACLE_NODE_ID } from '@miracle/constants';
 import { IEngine } from '@miracle/engine';
 import { ISchema } from '@miracle/react-core';
-import { makeAutoObservable } from 'mobx';
+import { makeAutoObservable, toJS } from 'mobx';
 import { container, singleton } from 'tsyringe';
 import { getEngine, isHTMLElement } from './util';
 
@@ -43,8 +43,11 @@ class SimulatorStore {
     this.designEngine?.reactDomCollector.mount(id, dom);
   }
 
-  update() {
+  update(needRecord = true) {
     this.schema = this.designEngine?.docTreeModel.getSchema() || null;
+    if (needRecord) {
+      this.designEngine?.docTreeModel?.historiesModel.record(toJS(this.schema));
+    }
   }
 
   remove() {
@@ -177,6 +180,14 @@ class SimulatorStore {
         setTimeout(() => {
           this.setDetectionStyle();
         }, 200);
+      });
+
+      this.designEngine.docTreeModel.on(EventName.Undo, () => {
+        this.update(false);
+      });
+
+      this.designEngine.docTreeModel.on(EventName.Redo, () => {
+        this.update(false);
       });
 
       this.designEngine.simulatorHost.on(EventName.SelectNode, () => {

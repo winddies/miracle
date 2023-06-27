@@ -10,7 +10,6 @@ export default function PreviewJson(props: IProps) {
   const [json, setJson] = useState('');
 
   useEffect(() => {
-    console.log('111', preId);
     const storedJson = sessionStorage.getItem(preId) ?? '';
     if (storedJson) {
       const formattedJson = JSON.stringify(JSON.parse(storedJson), null, 2);
