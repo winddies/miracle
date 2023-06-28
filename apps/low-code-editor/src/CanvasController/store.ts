@@ -1,4 +1,4 @@
-import { CanvasDisplayMode, MobileModel, mobileModelToSize } from '@miracle/constants';
+import { CanvasDisplayMode, EventName, MobileModel, mobileModelToSize } from '@miracle/constants';
 import { IEngine } from '@miracle/engine';
 import { makeAutoObservable, reaction } from 'mobx';
 import { container } from 'tsyringe';
@@ -8,6 +8,8 @@ class CanvasControllerStore {
 
   displayMode: CanvasDisplayMode = CanvasDisplayMode.PC;
   mobileModel: MobileModel = MobileModel.IPhone12_Pro;
+  undoDisabled = true;
+  redoDisabled = true;
 
   constructor() {
     makeAutoObservable(this);
@@ -27,6 +29,10 @@ class CanvasControllerStore {
 
   init(engine: IEngine) {
     this.engine = engine;
+    this.engine.docTreeModel.historiesModel.on(EventName.SnapPointerChange, () => {
+      this.undoDisabled = !this.engine?.docTreeModel.historiesModel.canUndo();
+      this.redoDisabled = !this.engine?.docTreeModel.historiesModel.canRedo();
+    });
 
     return reaction(
       () => ({

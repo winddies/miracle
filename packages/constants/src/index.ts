@@ -11,6 +11,7 @@ export enum EventName {
   CanvasSizeChange = 'canvasSizeChange',
   Undo = 'undo',
   Redo = 'redo',
+  SnapPointerChange = 'snapPointerChange',
 }
 
 export const MIRACLE_NODE_ID = 'miracle-node-id';
