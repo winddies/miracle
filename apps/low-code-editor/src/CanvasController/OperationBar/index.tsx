@@ -1,4 +1,5 @@
 import { Button, Space, Tooltip, notification } from 'antd';
+import classNames from 'classnames';
 import { observer } from 'mobx-react-lite';
 import { useContext, useEffect, useState } from 'react';
 import PreviewJson from 'src/Preview/PreviewJson';
@@ -51,12 +52,20 @@ export default observer(function OperationBar() {
         <div>
           <Tooltip title="撤销">
             <Button type="text" disabled={store.undoDisabled} onClick={() => engine.docTreeModel?.undo()}>
-              <img src={UndoIcon} alt="undo" className={store.undoDisabled ? styles['disabled'] : ''} />
+              <img
+                src={UndoIcon}
+                alt="undo"
+                className={classNames(store.undoDisabled ? styles['disabled'] : '', styles['icon'])}
+              />
             </Button>
           </Tooltip>
           <Tooltip title="回滚">
             <Button type="text" disabled={store.redoDisabled} onClick={() => engine.docTreeModel?.redo()}>
-              <img src={RedoIcon} alt="redo" className={store.redoDisabled ? styles['disabled'] : ''} />
+              <img
+                src={RedoIcon}
+                alt="redo"
+                className={classNames(store.redoDisabled ? styles['disabled'] : '', styles['icon'])}
+              />
             </Button>
           </Tooltip>
         </div>
