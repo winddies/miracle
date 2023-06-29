@@ -46,7 +46,7 @@ class SimulatorStore {
   update(needRecord = true) {
     this.schema = this.designEngine?.docTreeModel.getSchema() || null;
     if (needRecord) {
-      this.designEngine?.docTreeModel?.historiesModel.record(toJS(this.schema));
+      this.designEngine?.docTreeModel?.schemaSnapshots.record(toJS(this.schema));
     }
   }
 

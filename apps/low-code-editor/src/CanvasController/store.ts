@@ -29,9 +29,9 @@ class CanvasControllerStore {
 
   init(engine: IEngine) {
     this.engine = engine;
-    this.engine.docTreeModel.historiesModel.on(EventName.SnapPointerChange, () => {
-      this.undoDisabled = !this.engine?.docTreeModel.historiesModel.canUndo();
-      this.redoDisabled = !this.engine?.docTreeModel.historiesModel.canRedo();
+    this.engine.docTreeModel.schemaSnapshots.on(EventName.SnapshotsPointerChange, () => {
+      this.undoDisabled = !this.engine?.docTreeModel.schemaSnapshots.canUndo();
+      this.redoDisabled = !this.engine?.docTreeModel.schemaSnapshots.canRedo();
     });
 
     return reaction(

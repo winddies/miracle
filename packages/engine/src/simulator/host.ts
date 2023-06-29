@@ -75,10 +75,8 @@ export default class SimulatorHost extends EventEmitter {
     });
 
     this.iframeDocument?.addEventListener('mousemove', (e) => {
-      const { target } = e;
-      if (target) {
-        const { type } = (target as HTMLElement)?.dataset || {};
-        if (type === 'actionTools') return;
+      if (e?.target && (e.target as HTMLElement).dataset?.type === 'actionTools') {
+        return;
       }
       const pointLocation = {
         clientX: e.clientX,

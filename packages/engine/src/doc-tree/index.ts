@@ -6,7 +6,7 @@ import type { IPointLocation } from '../dragon';
 import ReactDomCollector from './reactInstanceCollector';
 // eslint-disable-next-line import/no-cycle
 import Node from './node';
-import SchemaHistories from './schemaHistories';
+import SchemaSnapshots from './schemaSnapshots';
 
 @singleton()
 export default class DocTreeModel extends EventEmitter {
@@ -17,10 +17,11 @@ export default class DocTreeModel extends EventEmitter {
   hoveredNode: Node | null = null;
 
   resizeObserver: ResizeObserver | null = null;
-  historiesModel: SchemaHistories = new SchemaHistories();
+  schemaSnapshots: SchemaSnapshots;
 
   constructor(public reactDomCollector: ReactDomCollector) {
     super();
+    this.schemaSnapshots = new SchemaSnapshots();
   }
 
   getSchema(): ISchema | null {
@@ -106,14 +107,14 @@ export default class DocTreeModel extends EventEmitter {
   }
 
   undo() {
-    this.historiesModel.undo();
-    this.createFromSchema(this.historiesModel.getCurSchema());
+    this.schemaSnapshots.undo();
+    this.createFromSchema(this.schemaSnapshots.getCurSchema());
     this.emit(EventName.Undo);
   }
 
   redo() {
-    this.historiesModel.redo();
-    this.createFromSchema(this.historiesModel.getCurSchema());
+    this.schemaSnapshots.redo();
+    this.createFromSchema(this.schemaSnapshots.getCurSchema());
     this.emit(EventName.Redo);
   }
 }
