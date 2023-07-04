@@ -5,8 +5,10 @@ import { RadioMaterial } from './Radio';
 import { RowMaterial } from './Row';
 import { SelectMaterial } from './Select';
 
+import { ImageMaterial } from './Image';
 import { InputMaterial } from './Input';
 import { SwitchMaterial } from './Switch';
+import { TextMaterial } from './Text';
 
 export interface IMaterial {
   group: string;
@@ -15,12 +17,8 @@ export interface IMaterial {
 
 export const materials = [
   {
-    group: 'button',
-    items: [ButtonMaterial, RadioMaterial, SwitchMaterial],
-  },
-  {
-    group: 'input',
-    items: [SelectMaterial, InputMaterial],
+    group: 'basic',
+    items: [ButtonMaterial, RadioMaterial, SwitchMaterial, SelectMaterial, InputMaterial, ImageMaterial, TextMaterial],
   },
   {
     group: 'layout',
@@ -32,5 +30,6 @@ const allComponents = materials.map((item) => item.items).flat();
 
 export function getMaterialByName(componentName: string) {
   const material = allComponents.find((item) => item.name === componentName);
+  console.log('material', material);
   return material;
 }
