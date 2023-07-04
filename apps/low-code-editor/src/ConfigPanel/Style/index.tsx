@@ -8,6 +8,7 @@ import LayoutBox from './LayoutBox';
 
 import store from '../store';
 
+import BackgroundBox from './BackgroundBox';
 import * as styles from './index.module.less';
 
 export default observer(function Style() {
@@ -29,7 +30,7 @@ export default observer(function Style() {
 
   return (
     <FormProvider {...methods}>
-      <Collapse defaultActiveKey={['layout', 'font']} ghost className={styles.collpase}>
+      <Collapse defaultActiveKey={['layout', 'font', 'background']} ghost className={styles.collpase}>
         <Collapse.Panel
           header="自定义 CSS"
           key="customCss"
@@ -61,6 +62,9 @@ export default observer(function Style() {
         {/* <Divider /> */}
         <Collapse.Panel header="字体" key="font">
           <FontBox />
+        </Collapse.Panel>
+        <Collapse.Panel header="背景" key="background">
+          <BackgroundBox />
         </Collapse.Panel>
       </Collapse>
     </FormProvider>

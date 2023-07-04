@@ -1,7 +1,9 @@
 import { Typography } from 'antd/lib';
 import React from 'react';
 
-const _Text = (props: { [x: string]: any; type: string }, ref: React.Ref<HTMLElement> | undefined) => {
+type Props = { type?: string } & Record<string, any>;
+
+const _Text = (props: Props, ref: React.Ref<HTMLElement> | undefined) => {
   const { type, ...others } = props;
   const { Title, Text } = Typography;
 

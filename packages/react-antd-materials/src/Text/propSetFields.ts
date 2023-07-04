@@ -33,11 +33,11 @@ export const propSetFields = {
         },
         options: [
           {
-            label: 'title',
+            label: '标题',
             value: '标题',
           },
           {
-            label: 'text',
+            label: '文本',
             value: '文本',
           },
         ],

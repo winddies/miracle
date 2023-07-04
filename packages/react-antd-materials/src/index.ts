@@ -30,6 +30,5 @@ const allComponents = materials.map((item) => item.items).flat();
 
 export function getMaterialByName(componentName: string) {
   const material = allComponents.find((item) => item.name === componentName);
-  console.log('material', material);
   return material;
 }
