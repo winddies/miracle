@@ -19,12 +19,5 @@ export const propSetFields = {
         placeholder: '请输入图片地址',
       },
     },
-    {
-      title: '点击预览大图',
-      field: 'preview',
-      type: 'boolean',
-      default: false,
-      'x-component': 'Switch',
-    },
   ],
 };

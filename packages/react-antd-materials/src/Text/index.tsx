@@ -1,14 +1,16 @@
 import { IComponentMaterial } from '@miracle/react-core';
-import _Text from './component';
+import { Typography } from 'antd';
 import Icon from './icon.svg';
 import { propSetFields } from './propSetFields';
 import { schema } from './schema';
+
+const { Text } = Typography;
 
 export const TextMaterial: IComponentMaterial = {
   title: '文本',
   name: 'Text',
   group: 'display',
-  component: _Text,
+  component: Text,
   propSetFields,
   schema,
   behaviorRule: {
