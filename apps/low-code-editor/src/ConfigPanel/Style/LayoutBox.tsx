@@ -1,13 +1,13 @@
 import { Form, Radio, Tooltip } from 'antd';
 import { useRef, useState } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
+import Block from 'src/icons/block.svg';
+import EyeNone from 'src/icons/eye-none.svg';
+import Flex from 'src/icons/flex.svg';
+import Grid from 'src/icons/grid.svg';
+import InlineBlock from 'src/icons/inline-block.svg';
+import Inline from 'src/icons/inline.svg';
 import { handleRegister } from 'src/utils/form-enhancement';
-import Block from '../icons/block.svg';
-import EyeNone from '../icons/eye-none.svg';
-import Flex from '../icons/flex.svg';
-import Grid from '../icons/grid.svg';
-import InlineBlock from '../icons/inline-block.svg';
-import Inline from '../icons/inline.svg';
 import * as styles from './index.module.less';
 
 export interface IProps {

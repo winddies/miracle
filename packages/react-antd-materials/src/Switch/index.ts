@@ -6,6 +6,7 @@ import _Switch from './component';
 import Icon from './icon.svg';
 
 export const SwitchMaterial: IComponentMaterial = {
+  title: '开关',
   name: 'Switch',
   group: 'button',
   component: _Switch,

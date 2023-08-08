@@ -7,6 +7,7 @@ import { propSetFields } from './propSetFields';
 import { schema } from './schema';
 
 export const ButtonMaterial: IComponentMaterial = {
+  title: '按钮',
   name: 'Button',
   group: 'button',
   component: Button,

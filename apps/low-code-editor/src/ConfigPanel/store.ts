@@ -2,12 +2,13 @@ import { getMaterialByName } from '@miracle/antd-materials';
 import { EventName } from '@miracle/constants';
 import { IEngine } from '@miracle/engine';
 import type Node from '@miracle/engine/lib/doc-tree/node';
-import { makeAutoObservable } from 'mobx';
+import { makeAutoObservable, reaction } from 'mobx';
 import { container } from 'tsyringe';
 
 class ConfigPanelStore {
   selectedNode: Node | null = null;
   engine: IEngine | null = null;
+  eventCollection: Record<string, any> | null = null;
 
   constructor() {
     makeAutoObservable(this);
@@ -43,6 +44,7 @@ class ConfigPanelStore {
     return componentName ? getMaterialByName(componentName)?.propSetFields : null;
   }
 
+  // 更新组件绑定的 props 数据
   updateProps(name: string, value: any) {
     if (value && typeof value === 'object') {
       for (const key in value) {
@@ -53,6 +55,18 @@ class ConfigPanelStore {
     }
 
     this.selectedNode?.props.setProp(name, value);
+  }
+
+  // 更新组件绑定的事件数据
+  updateEventData() {
+    const schema = this.selectedNode?.exportSchema();
+    const logic = schema?.['x-logic'];
+    this.eventCollection = logic && logic.events ? logic.events : null;
+  }
+
+  handleEventUpdate(name: string, value: Record<string, any>) {
+    this.selectedNode?.logic.setEvent(name, value);
+    this.updateEventData();
   }
 
   init(engine: IEngine) {
@@ -66,6 +80,16 @@ class ConfigPanelStore {
     this.engine.simulatorHost.on(EventName.SelectNode, () => {
       this.selectedNode = simulatorHost.docTreeModel.selectedNode;
     });
+
+    // 监听选中的节点变化，更新事件数据
+    reaction(
+      () => this.selectedNode,
+      () => {
+        if (!this.selectedNode) return;
+        this.updateEventData();
+      },
+      { fireImmediately: true },
+    );
   }
 }
 

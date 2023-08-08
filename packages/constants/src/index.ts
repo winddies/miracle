@@ -12,6 +12,7 @@ export enum EventName {
   Undo = 'undo',
   Redo = 'redo',
   SnapshotsPointerChange = 'SnapshotsPointerChange',
+  BindEvent = 'bindEvent',
 }
 
 export const MIRACLE_NODE_ID = 'miracle-node-id';
@@ -87,3 +88,11 @@ export enum CanvasDisplayMode {
   PC = 'pc',
   Mobile = 'mobile',
 }
+
+export enum X6NodeType {
+  Start = 'start', // 行为开始
+  Action = 'action', // 执行的动作
+  End = 'end', // 行为结束
+}
+
+export const DEFAULT_OUTPUT_NAME = 'output';

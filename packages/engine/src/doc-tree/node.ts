@@ -2,6 +2,7 @@ import { getMaterialByName } from '@miracle/antd-materials';
 import { ISchema } from '@miracle/react-core';
 import { uniqueId } from 'lodash';
 import type DocTreeModel from './index';
+import Logic from './logic';
 import Props from './props';
 
 export default class Node {
@@ -12,6 +13,7 @@ export default class Node {
   children: Node[];
   initialSchema: ISchema;
   props: Props;
+  logic: Logic;
   isRootNode = false;
 
   constructor(initialSchema: any, parent: Node | undefined, docTreeModel: DocTreeModel) {
@@ -22,15 +24,21 @@ export default class Node {
     this.docTreeModel = docTreeModel;
     this.initialSchema = initialSchema;
     this.props = new Props(this, initialSchema?.props, docTreeModel);
+    this.logic = new Logic(this, initialSchema?.['x-logic'], docTreeModel);
+
     this.children = initialSchema.children?.map((child: any) => new Node(child, this, docTreeModel)) || [];
   }
 
   exportSchema(): ISchema {
+    const logicData = this.logic.export();
     return {
       ...this.initialSchema,
       id: this.id,
       props: this.props.export(),
       children: this.children?.map((child) => child.exportSchema()) || [],
+      ...(logicData && {
+        'x-logic': logicData,
+      }),
     };
   }
 

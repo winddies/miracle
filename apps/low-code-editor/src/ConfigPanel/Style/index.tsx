@@ -9,7 +9,6 @@ import LayoutBox from './LayoutBox';
 import store from '../store';
 
 import BackgroundBox from './BackgroundBox';
-import * as styles from './index.module.less';
 
 export default observer(function Style() {
   const values = useMemo(() => store.style, [store.selectedNode]);
@@ -30,7 +29,7 @@ export default observer(function Style() {
 
   return (
     <FormProvider {...methods}>
-      <Collapse defaultActiveKey={['layout', 'font', 'background']} ghost className={styles.collpase}>
+      <Collapse defaultActiveKey={['customCss', 'layout', 'font', 'background']} ghost>
         <Collapse.Panel
           header="自定义 CSS"
           key="customCss"

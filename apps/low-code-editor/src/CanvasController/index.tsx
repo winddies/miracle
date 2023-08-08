@@ -5,12 +5,12 @@ import classNames from 'classnames';
 import { values } from 'lodash';
 import { observer } from 'mobx-react-lite';
 import { useContext, useEffect } from 'react';
+import Mobile from 'src/icons/mobile.svg';
+import PC from 'src/icons/pc.svg';
 import { engineContext } from 'src/utils/context';
 import Divider from './Divider';
 import OperationBar from './OperationBar';
 import * as styles from './index.module.less';
-import Mobile from './mobile.svg';
-import PC from './pc.svg';
 import store from './store';
 
 const mobileItems = values(MobileModel).map((model) => {

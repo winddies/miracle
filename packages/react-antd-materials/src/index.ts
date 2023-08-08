@@ -18,10 +18,12 @@ export interface IMaterial {
 export const materials = [
   {
     group: 'basic',
+    title: '基础组件',
     items: [ButtonMaterial, RadioMaterial, SwitchMaterial, SelectMaterial, InputMaterial, ImageMaterial, TextMaterial],
   },
   {
     group: 'layout',
+    title: '布局组件',
     items: [RowMaterial, ColMaterial],
   },
 ];

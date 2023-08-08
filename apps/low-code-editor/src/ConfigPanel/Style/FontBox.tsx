@@ -1,10 +1,10 @@
 import { Col, ColorPicker, Form, Input, Radio, Row, Tooltip } from 'antd';
 import { Controller, useFormContext } from 'react-hook-form';
+import Center from 'src/icons/align-center.svg';
+import Justify from 'src/icons/align-justify.svg';
+import Left from 'src/icons/align-left.svg';
+import Right from 'src/icons/align-right.svg';
 import { addDebounceToField } from 'src/utils/form-enhancement';
-import Center from '../icons/align-center.svg';
-import Justify from '../icons/align-justify.svg';
-import Left from '../icons/align-left.svg';
-import Right from '../icons/align-right.svg';
 import * as styles from './index.module.less';
 
 const layout = { labelCol: { span: 7 }, wrapperCol: { span: 12 } };

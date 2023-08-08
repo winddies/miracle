@@ -19,10 +19,11 @@
     "vite": "^4.3.9"
   },
   "dependencies": {
-    "inline-css-parser": "^0.3.0",
     "@miracle/antd-materials": "workspace:^0.0.1",
     "@miracle/constants": "workspace:^0.0.1",
-    "@miracle/react-core": "workspace:^0.0.1"
+    "@miracle/logic-runtime": "workspace:^0.0.1",
+    "@miracle/react-core": "workspace:^0.0.1",
+    "inline-css-parser": "^0.3.0"
   },
   "publishConfig": {
     "access": "public",

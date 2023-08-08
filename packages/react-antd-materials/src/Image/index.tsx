@@ -5,6 +5,7 @@ import { propSetFields } from './propSetFields';
 import { schema } from './schema';
 
 export const ImageMaterial: IComponentMaterial = {
+  title: '图片',
   name: 'Image',
   group: 'display',
   component: Image,

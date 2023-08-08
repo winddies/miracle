@@ -1,0 +1,25 @@
+{
+  "name": "@miracle/logic-meta-materials",
+  "version": "0.0.1",
+  "types": "lib/index.d.ts",
+  "module": "lib/index.es.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && tsc"
+  },
+  "files": [
+    "lib"
+  ],
+  "devDependencies": {
+    "typescript": "^5.0.2",
+    "typescript-plugin-css-modules": "^5.0.1"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "dependencies": {
+    "@miracle/constants": "workspace:^0.0.1",
+    "@miracle/react-core": "workspace:^0.0.1"
+  }
+}

@@ -19,8 +19,10 @@ export function FormControl({ schema, formService }: IProps) {
 
   const values = useMemo(() => {
     return formItems.reduce((prev, curr) => {
+      // TODO: 这里有个问题，就是有的组件 value 对应的名称不是 value，比如 Switch 的 value 对应的是 checked
+      const { value } = curr['x-component-props'] || {};
       // eslint-disable-next-line no-param-reassign
-      prev[curr.field] = curr.default;
+      prev[curr.field] = value || curr.default || null;
       return prev;
     }, {});
   }, [schema]);

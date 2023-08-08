@@ -5,6 +5,7 @@ import { propSetFields } from './propSetFields';
 import { schema } from './schema';
 
 export const TextMaterial: IComponentMaterial = {
+  title: '文本',
   name: 'Text',
   group: 'display',
   component: _Text,

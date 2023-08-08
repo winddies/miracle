@@ -36,6 +36,9 @@
   },
   "dependencies": {
     "@ant-design/icons": "^5.0.1",
+    "@antv/x6": "^2.11.1",
+    "@antv/x6-plugin-selection": "^2.1.7",
+    "@antv/x6-react-shape": "^2.2.2",
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
     "@fortawesome/free-regular-svg-icons": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
@@ -44,6 +47,7 @@
     "@miracle/constants": "workspace:^0.0.1",
     "@miracle/engine": "workspace:^0.0.1",
     "@miracle/form-control": "workspace:^0.0.1",
+    "@miracle/logic-meta-materials": "workspace:^0.0.1",
     "@miracle/react-core": "workspace:^0.0.1",
     "@miracle/renderer": "workspace:^0.0.1",
     "@monaco-editor/react": "^4.5.1",

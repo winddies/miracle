@@ -6,7 +6,7 @@ import { container } from 'tsyringe';
 class CanvasControllerStore {
   engine: IEngine | null = null;
 
-  displayMode: CanvasDisplayMode = CanvasDisplayMode.PC;
+  displayMode: CanvasDisplayMode = CanvasDisplayMode.Mobile;
   mobileModel: MobileModel = MobileModel.IPhone12_Pro;
   undoDisabled = true;
   redoDisabled = true;

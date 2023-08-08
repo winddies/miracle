@@ -1,0 +1,77 @@
+.visualArranger {
+  width: 100vw !important;
+  height: 100vh !important;
+  top: 24px;
+
+  .layout {
+    display: flex;
+    padding-top: 24px;
+
+    .siderTab,
+    .rightConfig {
+      width: 300px;
+      border: 1px solid #eee;
+      padding: 0 12px;
+    }
+
+    .rightConfig {
+      &:empty:after {
+        align-items: center;
+        align-self: stretch;
+        content: '请在画布里选择节点';
+        display: flex;
+        flex: 1 0 0;
+        justify-content: center;
+        height: 60px;
+        opacity: 0.6;
+        outline: 1px dashed #ccc;
+        outline-offset: -1px;
+      }
+
+      .title {
+        padding: 12px 0;
+        font-weight: 500;
+      }
+    }
+
+    :global(#arranger) {
+      flex: 1;
+      height: 80vh !important;
+      overflow: auto;
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 0 10px #ccc;
+      margin: 0 24px;
+    }
+  }
+}
+
+.variable {
+  text-align: center;
+
+  .varList {
+    margin-top: 40px;
+  }
+
+  .varItem {
+    display: flex;
+    align-items: center;
+    margin-left: 40px;
+
+    img {
+      width: 24px;
+      margin-right: 24px;
+    }
+
+    .action {
+      position: absolute;
+      right: 10px;
+      width: 18px;
+      cursor: pointer;
+    }
+  }
+
+  :global(.ant-divider) {
+    margin: 8px 0;
+  }
+}

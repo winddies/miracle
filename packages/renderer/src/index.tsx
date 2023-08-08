@@ -1,5 +1,6 @@
+import LogicRuntime from '@miracle/logic-runtime';
 import { ISchema } from '@miracle/react-core';
-import { useEffect, useRef } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import BaseRenderer from './BaseRenderer';
 import EmptyComponent from './EmptyComponent';
 import { simulatorContext } from './context';
@@ -11,6 +12,7 @@ type Props =
 
 export default function PageRenderer({ schema, designMode, store }: Props) {
   const ref = useRef<HTMLDivElement>(null);
+  const logicRuntime = useMemo(() => new LogicRuntime(), []);
 
   useEffect(() => {
     if (designMode) {
@@ -22,7 +24,7 @@ export default function PageRenderer({ schema, designMode, store }: Props) {
 
   return (
     <div ref={ref} className="pageContainer">
-      <simulatorContext.Provider value={{ store, designMode }}>
+      <simulatorContext.Provider value={{ store, designMode, logicRuntime }}>
         {schema.children?.length ? (
           schema.children.map((item: any) => <BaseRenderer schema={item} key={item.id} />)
         ) : (

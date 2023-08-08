@@ -6,6 +6,7 @@ import Icon from './icon.svg';
 import './index.less';
 
 export const RowMaterial: IComponentMaterial = {
+  title: '行',
   name: 'Row',
   group: 'layout',
   component: Row,

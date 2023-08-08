@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 
-import { ContainerType, EventName } from '@miracle/constants';
+import { CanvasDisplayMode, ContainerType, EventName, MobileModel, mobileModelToSize } from '@miracle/constants';
 import { ICanvasDisplayModel } from '@miracle/react-core';
 import EventEmitter from 'eventemitter3';
 import { container, singleton } from 'tsyringe';
@@ -28,7 +28,10 @@ const defaultSchema = {
 
 @singleton()
 class DesignEngine extends EventEmitter implements IEngine {
-  displayModel: ICanvasDisplayModel;
+  displayModel: ICanvasDisplayModel = {
+    mode: CanvasDisplayMode.Mobile,
+    screenSize: mobileModelToSize[MobileModel.IPhone12_Pro],
+  };
 
   constructor(
     public dragon: Dragon,

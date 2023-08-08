@@ -9,6 +9,7 @@ import './index.less';
 import { propSetFields } from './propSetFields';
 
 export const ColMaterial: IComponentMaterial = {
+  title: '列',
   name: 'Col',
   group: 'layout',
   component: Col,

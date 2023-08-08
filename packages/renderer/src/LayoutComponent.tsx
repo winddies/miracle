@@ -9,9 +9,10 @@ import { transInlineCssToStyleObject } from './utils';
 
 interface IProps {
   schema: ISchema;
+  [key: string]: any;
 }
 
-export default function LayoutComponent({ schema }: IProps) {
+export default function LayoutComponent({ schema, ...otherProps }: IProps) {
   const ref = useRef<HTMLDivElement>(null);
   const data = useContext(simulatorContext);
 
@@ -51,6 +52,7 @@ export default function LayoutComponent({ schema }: IProps) {
             ...(noRef && { [MIRACLE_NODE_ID]: schema.id, id: schema.id }),
             ...designProps,
             ...others,
+            ...otherProps,
           },
           children,
         )

@@ -9,7 +9,7 @@ import * as styles from './index.module.less';
 export default observer(function FrameEditorRender() {
   const ref = useRef<HTMLIFrameElement>(null);
   const engine = useContext(engineContext);
-  const [displayModel, setDisplayModel] = useState<ICanvasDisplayModel>();
+  const [displayModel, setDisplayModel] = useState<ICanvasDisplayModel>(engine.displayModel);
 
   useEffect(() => {
     if (ref.current) {

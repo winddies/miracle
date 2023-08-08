@@ -1,15 +1,28 @@
-import { usePredefinedMaterials } from 'src/hooks/material';
+import { Collapse } from 'antd';
+import { useMemo } from 'react';
 import ResourceCollapsePannel from './ResourceCollapsePannel';
 
-export default function ResourceNavBar() {
-  const materials = usePredefinedMaterials();
+interface IProps {
+  resource: any;
+}
+
+export default function ResourceNavBar({ resource }: IProps) {
+  const groups = useMemo(() => resource.map((data: any) => data.group), []);
+  // const [activeKey, setActiveKey] = useState('');
+
+  // const handleChange = useCallback((key: string) => {
+  //   setActiveKey(key);
+  // }, []);
+
   return (
-    <>
-      {materials.map((material) => {
+    <Collapse ghost defaultActiveKey={groups}>
+      {resource.map((data: any) => {
         return (
-          <ResourceCollapsePannel key={material.group} title={material.group} defaultExpand data={material.items} />
+          <Collapse.Panel header={<div>{data.title}</div>} key={data.group}>
+            <ResourceCollapsePannel key={data.group} title={data.title} defaultExpand data={data.items} />
+          </Collapse.Panel>
         );
       })}
-    </>
+    </Collapse>
   );
 }

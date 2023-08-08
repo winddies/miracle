@@ -24,7 +24,7 @@ export default function ResourceItem({ data }: IProps) {
         <div ref={ref} className={styles.resourceIcon}>
           <img src={data.resourceConfig.icon} className={styles.resourceIcon} draggable={false} />
         </div>
-        <div className={styles.resourceTitle}>{data.name}</div>
+        <div className={styles.resourceTitle}>{data.title}</div>
       </div>
     </Col>
   );

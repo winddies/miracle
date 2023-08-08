@@ -4,6 +4,7 @@ import Icon from './icon.svg';
 import { schema } from './schema';
 
 export const SelectMaterial: IComponentMaterial = {
+  title: '下拉框',
   name: 'Select',
   group: 'input',
   component: Select,

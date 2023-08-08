@@ -7,6 +7,7 @@ import { propSetFields } from './propSetFields';
 import { schema } from './schema';
 
 export const InputMaterial: IComponentMaterial = {
+  title: '输入框',
   name: 'Input',
   group: 'input',
   component: Input,

@@ -5,6 +5,7 @@ import Radio from 'antd/lib/radio';
 import Icon from './icon.svg';
 
 export const RadioMaterial: IComponentMaterial = {
+  title: '单选框',
   name: 'Radio',
   group: 'button',
   component: Radio,

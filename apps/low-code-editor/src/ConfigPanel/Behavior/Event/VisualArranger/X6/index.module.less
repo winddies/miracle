@@ -1,0 +1,42 @@
+.dagNode {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+:global(.x6-node-selected) {
+  .mainArea {
+    border-color: #3471f9 !important;
+  }
+}
+
+.mainArea {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  width: 90px;
+  height: 20px;
+  color: rgba(0, 0, 0, 65%);
+  font-size: 12px;
+  font-family: PingFangSC;
+  line-height: 24px;
+  background-color: #fff;
+  box-shadow: 0 -1px 4px 0 rgba(209, 209, 209, 50%), 1px 1px 4px 0 rgba(217, 217, 217, 50%);
+  border-radius: 2px;
+  border: 1px solid transparent;
+
+  &:hover {
+    border: 1px solid rgba(0, 0, 0, 10%);
+    box-shadow: 0 -2px 4px 0 rgba(209, 209, 209, 50%), 2px 2px 4px 0 rgba(217, 217, 217, 50%);
+  }
+
+  .nodeName {
+    margin-left: 10px;
+  }
+
+  img {
+    width: 30px;
+  }
+}

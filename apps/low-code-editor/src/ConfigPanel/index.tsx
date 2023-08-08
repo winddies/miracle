@@ -2,6 +2,7 @@ import Tabs from 'antd/lib/tabs';
 import { observer } from 'mobx-react-lite';
 import { useContext, useEffect } from 'react';
 import { engineContext } from '../utils/context';
+import Behavior from './Behavior';
 import Props from './Props';
 import Style from './Style';
 import * as styles from './index.module.less';
@@ -18,10 +19,11 @@ const tabItems = [
     key: '2',
     children: <Props />,
   },
-  // {
-  //   label: '事件',
-  //   key: '2',
-  // },
+  {
+    label: '行为',
+    key: '3',
+    children: <Behavior />,
+  },
   // {
   //   label: '数据',
   //   key: '4',

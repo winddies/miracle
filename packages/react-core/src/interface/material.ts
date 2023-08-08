@@ -1,5 +1,7 @@
 import { ContainerType } from '@miracle/constants';
 import React from 'react';
+import { FormSchema } from './form';
+import { ILogicFlow } from './logic';
 
 export interface IBehaviorRule {
   droppable?: boolean; // 是否可当作容器
@@ -21,19 +23,11 @@ export interface ISchema {
   // type?: ComponentType;
   id?: string;
   props?: Record<string, any>;
+  'x-logic'?: ILogicFlow;
 }
-
-export type FormItemSchema = Record<string, any>;
-export interface IFormSchemaObject {
-  type: string;
-  'x-component': string;
-  'x-component-props': Record<string, any>;
-  properties: FormItemSchema[];
-}
-
-export type FormSchema = IFormSchemaObject | FormItemSchema[];
 
 export interface IComponentMaterial {
+  title: string;
   name: string;
   group: string;
   schema: ISchema;
