@@ -8,7 +8,7 @@ import Header from './layout/Header';
 import SideBar from './layout/SideBar';
 import { engineContext } from './utils/context';
 
-import CanvasController from './CanvasController';
+import CanvasController from './CanvasOperation';
 import LeftSider from './layout/LeftSider';
 
 const { Content } = Layout;

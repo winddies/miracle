@@ -4,13 +4,13 @@ import { observer } from 'mobx-react-lite';
 import { useContext, useEffect, useState } from 'react';
 import PreviewJson from 'src/Preview/PreviewJson';
 import { engineContext } from 'src/utils/context';
+import CodeIcon from '../../icons/code.svg';
+import PreviewIcon from '../../icons/play.svg';
+import RedoIcon from '../../icons/redo.svg';
+import UndoIcon from '../../icons/undo.svg';
 import Divider from '../Divider';
 import store from '../store';
-import PreviewIcon from './Play.svg';
-import CodeIcon from './code.svg';
 import * as styles from './index.module.less';
-import RedoIcon from './redo.svg';
-import UndoIcon from './undo.svg';
 
 export default observer(function OperationBar() {
   const engine = useContext(engineContext);

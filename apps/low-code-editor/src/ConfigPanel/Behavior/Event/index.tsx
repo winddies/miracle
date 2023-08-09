@@ -2,9 +2,9 @@
  * @Author: Heng-Zhang2 Heng.Zhang2@budweiserapac.com
  * @Date: 2023-07-04 15:05:20
  * @LastEditors: Heng-Zhang2 Heng.Zhang2@budweiserapac.com
- * @LastEditTime: 2023-08-03
+ * @LastEditTime: 2023-08-09
  * @FilePath: /miracle/apps/low-code-editor/src/ConfigPanel/Behavior/Event/index.tsx
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @Description: 事件管理面板
  */
 import { PlusOutlined } from '@ant-design/icons';
 import { Button, Divider, Dropdown } from 'antd';
