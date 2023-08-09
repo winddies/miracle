@@ -51,7 +51,7 @@ export default observer(function OperationBar() {
       <Space split={<Divider />}>
         <div>
           <Tooltip title="撤销">
-            <Button type="text" disabled={store.undoDisabled} onClick={() => engine.docTreeModel?.undo()}>
+            <Button type="text" disabled={store.undoDisabled} onClick={() => engine.docTreeModel?.execute('undo')}>
               <img
                 src={UndoIcon}
                 alt="undo"
@@ -60,7 +60,7 @@ export default observer(function OperationBar() {
             </Button>
           </Tooltip>
           <Tooltip title="回滚">
-            <Button type="text" disabled={store.redoDisabled} onClick={() => engine.docTreeModel?.redo()}>
+            <Button type="text" disabled={store.redoDisabled} onClick={() => engine.docTreeModel?.execute('redo')}>
               <img
                 src={RedoIcon}
                 alt="redo"

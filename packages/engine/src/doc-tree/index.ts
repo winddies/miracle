@@ -17,11 +17,9 @@ export default class DocTreeModel extends EventEmitter {
   hoveredNode: Node | null = null;
 
   resizeObserver: ResizeObserver | null = null;
-  schemaSnapshots: SchemaSnapshots;
 
-  constructor(public reactDomCollector: ReactDomCollector) {
+  constructor(public reactDomCollector: ReactDomCollector, public schemaSnapshots: SchemaSnapshots) {
     super();
-    this.schemaSnapshots = new SchemaSnapshots();
   }
 
   getSchema(): ISchema | null {
@@ -41,6 +39,7 @@ export default class DocTreeModel extends EventEmitter {
   setSelectedNode(node: Node | null) {
     // this.resizeObserver?.disconnect();
     this.selectedNode = node;
+    this.emit(EventName.SelectNode);
     // if (!node) return;
     // this.resizeObserver = new ResizeObserver(() => {
     //   this.emit(EventName.Resize);
@@ -53,6 +52,7 @@ export default class DocTreeModel extends EventEmitter {
 
   setHoverNode(node: Node | null) {
     this.hoveredNode = node;
+    this.emit(EventName.HoverNode);
   }
 
   removeNode(node: Node) {
@@ -106,15 +106,11 @@ export default class DocTreeModel extends EventEmitter {
     this.emit(EventName.NodePropsChange);
   }
 
-  undo() {
-    this.schemaSnapshots.undo();
+  execute(type: 'undo' | 'redo') {
+    this.schemaSnapshots[type]();
     this.createFromSchema(this.schemaSnapshots.getCurSchema());
-    this.emit(EventName.Undo);
-  }
-
-  redo() {
-    this.schemaSnapshots.redo();
-    this.createFromSchema(this.schemaSnapshots.getCurSchema());
-    this.emit(EventName.Redo);
+    this.setSelectedNode(null);
+    this.emit(EventName.SelectNode);
+    this.emit(EventName.SnapshotsPointerChange);
   }
 }

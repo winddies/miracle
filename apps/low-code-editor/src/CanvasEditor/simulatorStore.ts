@@ -165,6 +165,12 @@ class SimulatorStore {
     }
   }
 
+  reset() {
+    this.detectionHoverStyle = {};
+    this.detectionStyle = {};
+    this.insertLineStyle = {};
+  }
+
   init = () => {
     this.designEngine = getEngine();
     if (this.designEngine) {
@@ -182,19 +188,16 @@ class SimulatorStore {
         }, 200);
       });
 
-      this.designEngine.docTreeModel.on(EventName.Undo, () => {
+      this.designEngine.docTreeModel.on(EventName.SnapshotsPointerChange, () => {
         this.update(false);
+        this.reset();
       });
 
-      this.designEngine.docTreeModel.on(EventName.Redo, () => {
-        this.update(false);
-      });
-
-      this.designEngine.simulatorHost.on(EventName.SelectNode, () => {
+      this.designEngine.docTreeModel.on(EventName.SelectNode, () => {
         this.setDetectionStyle();
       });
 
-      this.designEngine.simulatorHost.on(EventName.HoverNode, () => {
+      this.designEngine.docTreeModel.on(EventName.HoverNode, () => {
         this.setDetectionHoverStyle();
       });
 

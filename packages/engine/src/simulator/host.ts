@@ -21,7 +21,6 @@ export default class SimulatorHost extends EventEmitter {
 
   setSelectedNode(node: Node | null) {
     this.docTreeModel.setSelectedNode(node);
-    this.emit(EventName.SelectNode);
   }
 
   setHoverNode(node: Node | null) {

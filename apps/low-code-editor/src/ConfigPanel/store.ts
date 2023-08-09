@@ -76,9 +76,8 @@ class ConfigPanelStore {
       throw new Error('engine is not initialized');
     }
 
-    const { simulatorHost } = this.engine;
-    this.engine.simulatorHost.on(EventName.SelectNode, () => {
-      this.selectedNode = simulatorHost.docTreeModel.selectedNode;
+    this.engine.docTreeModel.on(EventName.SelectNode, () => {
+      this.selectedNode = (this.engine as IEngine).docTreeModel.selectedNode;
     });
 
     // 监听选中的节点变化，更新事件数据
