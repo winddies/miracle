@@ -2,7 +2,7 @@
  * @Author: Heng-Zhang2 Heng.Zhang2@budweiserapac.com
  * @Date: 2023-07-04 15:05:20
  * @LastEditors: Heng-Zhang2 Heng.Zhang2@budweiserapac.com
- * @LastEditTime: 2023-08-09
+ * @LastEditTime: 2023-08-10
  * @FilePath: /miracle/apps/low-code-editor/src/ConfigPanel/Behavior/Event/index.tsx
  * @Description: 事件管理面板
  */
@@ -15,7 +15,7 @@ import EditIcon from 'src/icons/edit.svg';
 import EventIcon from 'src/icons/event.svg';
 
 import store from '../../store';
-import VisualArranger from './VisualArranger';
+import VisualArranger from '../VisualArranger';
 import * as styles from './index.module.less';
 
 const defaultEvents = [

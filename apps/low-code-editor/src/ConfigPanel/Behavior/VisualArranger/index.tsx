@@ -5,7 +5,6 @@ import { useContext, useEffect, useRef } from 'react';
 import { engineContext } from 'src/utils/context';
 import MetaConfig from './MetaConfig';
 import MetaList from './MetaList';
-import Variable from './Variable';
 import * as styles from './index.module.less';
 import store from './store';
 
@@ -20,11 +19,6 @@ const items = [
     label: '元件',
     key: 'arranger',
     children: <MetaList />,
-  },
-  {
-    label: '变量',
-    key: 'variable',
-    children: <Variable />,
   },
 ];
 
