@@ -1,4 +1,4 @@
-import { Button, Space, Tooltip, notification } from 'antd';
+import { Button, Divider, Space, Tooltip, notification } from 'antd';
 import classNames from 'classnames';
 import { observer } from 'mobx-react-lite';
 import { useContext, useEffect, useState } from 'react';
@@ -8,7 +8,6 @@ import CodeIcon from '../../icons/code.svg';
 import PreviewIcon from '../../icons/play.svg';
 import RedoIcon from '../../icons/redo.svg';
 import UndoIcon from '../../icons/undo.svg';
-import Divider from '../Divider';
 import store from '../store';
 import * as styles from './index.module.less';
 
@@ -48,7 +47,7 @@ export default observer(function OperationBar() {
 
   return (
     <div className={styles['container']}>
-      <Space split={<Divider />}>
+      <Space split={<Divider type="vertical" />}>
         <div>
           <Tooltip title="撤销">
             <Button type="text" disabled={store.undoDisabled} onClick={() => engine.docTreeModel?.execute('undo')}>
