@@ -1,5 +1,5 @@
 import Tabs from 'antd/es/tabs';
-import ResourceNavBar from 'src/ResourceNavBar';
+import ResourceNavBar from 'src/feature/ResourceDisplay';
 import { usePredefinedMaterials } from 'src/hooks/material';
 import * as styles from '../index.module.less';
 

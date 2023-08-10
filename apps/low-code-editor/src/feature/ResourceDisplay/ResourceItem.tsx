@@ -1,7 +1,7 @@
 import { IComponentMaterial } from '@miracle/react-core';
 import Col from 'antd/es/col';
 import { useContext, useEffect, useRef } from 'react';
-import { engineContext } from '../utils/context';
+import { engineContext } from '../../utils/context';
 import * as styles from './index.module.less';
 
 interface IProps {

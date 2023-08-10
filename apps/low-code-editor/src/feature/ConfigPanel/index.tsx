@@ -1,7 +1,7 @@
 import Tabs from 'antd/lib/tabs';
 import { observer } from 'mobx-react-lite';
 import { useContext, useEffect } from 'react';
-import { engineContext } from '../utils/context';
+import { engineContext } from '../../utils/context';
 import Behavior from './Behavior';
 import Props from './Props';
 import Style from './Style';

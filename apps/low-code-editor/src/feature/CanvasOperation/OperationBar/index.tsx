@@ -2,12 +2,12 @@ import { Button, Divider, Space, Tooltip, notification } from 'antd';
 import classNames from 'classnames';
 import { observer } from 'mobx-react-lite';
 import { useContext, useEffect, useState } from 'react';
-import PreviewJson from 'src/Preview/PreviewJson';
+import CodeIcon from 'src/icons/code.svg';
+import PreviewIcon from 'src/icons/play.svg';
+import RedoIcon from 'src/icons/redo.svg';
+import UndoIcon from 'src/icons/undo.svg';
+import PreviewJson from 'src/page/Preview/PreviewJson';
 import { engineContext } from 'src/utils/context';
-import CodeIcon from '../../icons/code.svg';
-import PreviewIcon from '../../icons/play.svg';
-import RedoIcon from '../../icons/redo.svg';
-import UndoIcon from '../../icons/undo.svg';
 import store from '../store';
 import * as styles from './index.module.less';
 

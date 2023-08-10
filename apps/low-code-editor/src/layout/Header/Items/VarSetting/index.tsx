@@ -1,7 +1,7 @@
 import { SettingOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
 import { useState } from 'react';
-import Variable from 'src/Variable';
+import Variable from 'src/feature/Variable';
 import * as styles from '../../index.module.less';
 
 export default function VarSetting() {

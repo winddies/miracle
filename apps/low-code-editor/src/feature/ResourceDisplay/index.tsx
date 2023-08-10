@@ -6,7 +6,7 @@ interface IProps {
   resource: any;
 }
 
-export default function ResourceNavBar({ resource }: IProps) {
+export default function ResourceDisplay({ resource }: IProps) {
   const groups = useMemo(() => resource.map((data: any) => data.group), []);
   // const [activeKey, setActiveKey] = useState('');
 
